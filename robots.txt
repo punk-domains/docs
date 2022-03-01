@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://punk.domains/sitemap.xml.gz
+Sitemap: https://docs.punk.domains/sitemap.xml.gz

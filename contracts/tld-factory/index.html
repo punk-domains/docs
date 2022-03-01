@@ -15,20 +15,23 @@
     <meta property="og:url" content="https://docs.punk.domains/contracts/tld-factory/">
     <meta property="og:title" content="TLD Factory Contract">
     <meta property="og:description" content="TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs...">
+    <meta property="og:image" content="https://docs.punk.domains/static/domain-image-example.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://docs.punk.domains/contracts/tld-factory/">
     <meta property="twitter:title" content="TLD Factory Contract">
     <meta property="twitter:description" content="TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs...">
+    <meta property="twitter:image" content="https://docs.punk.domains/static/domain-image-example.png">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.699474899146" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.699477955003" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699474899146" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699477955003" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699474899146" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699477955003" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699477955003" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -183,24 +186,249 @@
     </h1>
 </doc-anchor-target>
 <p>TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs and their respective addresses.</p>
+<p><strong>Contract code:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkTLDFactory.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkTLDFactory.sol</a></p>
 <doc-anchor-target id="read-methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#read-methods">#</doc-anchor-trigger>
         <span>Read methods</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="section">
+<doc-anchor-target id="gettldsarray">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#section">#</doc-anchor-trigger>
-        <span></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gettldsarray">#</doc-anchor-trigger>
+        <span><code v-pre>getTldsArray</code></span>
     </h3>
 </doc-anchor-target>
-<doc-anchor-target id="write-methods">
+<p>Returns an array of all TLDs that were created with this factory contract.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getTldsArray() public view returns(string[] memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>An array of TLD names</li>
+</ul>
+<doc-anchor-target id="royalty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#royalty">#</doc-anchor-trigger>
+        <span><code v-pre>royalty</code></span>
+    </h3>
+</doc-anchor-target>
+<p>For every new domain name (created in a TLD contract) a royalty payment is taken and sent to Punk Domains governance.</p>
+<p>In case a domain is created for free by TLD owner, or if royalty is set to 0, there&#x27;s no royalty to be paid.</p>
+<p>The royalty amount set in the Factory contract applies only to newly created TLDs and can be then changed separately in each TLD contract.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function royalty() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>TLD royalty in wei</li>
+</ul>
+<doc-anchor-target id="price">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#price">#</doc-anchor-trigger>
+        <span><code v-pre>price</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the price to create a new TLD.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function price() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>TLD price in wei</li>
+</ul>
+<doc-anchor-target id="buyingenabled">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#buyingenabled">#</doc-anchor-trigger>
+        <span><code v-pre>buyingEnabled</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If this value is set to <code v-pre>false</code>, only the Factory owner (Punk Domains governance) can create new TLDs (for free). Otherwise anyone can create new TLDs (but paid).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function buyingEnabled() public view returns(bool)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Boolean value (<code v-pre>true</code> or <code v-pre>false</code>)</li>
+</ul>
+<doc-anchor-target id="namemaxlength">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#namemaxlength">#</doc-anchor-trigger>
+        <span><code v-pre>nameMaxLength</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the maximum length of a TLD name.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function nameMaxLength() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>The number of characters that a TLD name can have at maximum</li>
+</ul>
+<doc-anchor-target id="projectname">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#projectname">#</doc-anchor-trigger>
+        <span><code v-pre>projectName</code></span>
+    </h3>
+</doc-anchor-target>
+<p>This is useful for default domain name NFT images which show the project name at the bottom:</p>
+<p><figure class="content-center">
+    <img src="../../static/domain-image-example.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function projectName() public view returns(string)</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="public-write-method">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#write-methods">#</doc-anchor-trigger>
-        <span>Write methods</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#public-write-method">#</doc-anchor-trigger>
+        <span>Public Write method</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="createtld">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#createtld">#</doc-anchor-trigger>
+        <span><code v-pre>createTld</code></span>
+    </h3>
+</doc-anchor-target>
+<p>If buying TLDs is enabled, anyone can create a new TLD name.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function createTld(
+	string memory _name,
+	string memory _symbol,
+	address _tldOwner,
+	uint256 _domainPrice,
+	bool _buyingEnabled
+) public payable returns(address)</code></pre>
+</doc-codeblock></div>
+<p>Inputs:</p>
+<ul>
+<li><code v-pre>_name</code>: A TLD name, for example <code v-pre>.web3</code>. Then name must contain only one dot which must be at the beginning.</li>
+<li><code v-pre>_symbol</code>: The symbol is usually TLD name in uppercase letters. Symbol is only needed because the ERC-721 standard requires it, otherwise it&#x27;s irrelevant.</li>
+<li><code v-pre>_tldOwner</code>: The owner of the newly created TLD. Can be a different entity than the <code v-pre>msg.sender</code>. TLD owner will receive payments for all newly created domains under this TLD.</li>
+<li><code v-pre>_domainPrice</code>: Price for creating new domains under this TLD. TLD owner can change this at any time in the TLD contract.</li>
+<li><code v-pre>_buyingEnabled</code>: Should buying domains be enabled from the start or not.</li>
+</ul>
+<p>Output:</p>
+<ul>
+<li>Newly created TLD address</li>
+</ul>
+<doc-anchor-target id="owner-write-methods">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-write-methods">#</doc-anchor-trigger>
+        <span>Owner Write methods</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="ownercreatetld">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#ownercreatetld">#</doc-anchor-trigger>
+        <span><code v-pre>ownerCreateTld</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can create a new TLD for free.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function ownerCreateTld(
+	string memory _name,
+	string memory _symbol,
+	address _tldOwner,
+	uint256 _domainPrice,
+	bool _buyingEnabled
+) public onlyOwner returns(address)</code></pre>
+</doc-codeblock></div>
+<p>Inputs:</p>
+<ul>
+<li><code v-pre>_name</code>: A TLD name, for example <code v-pre>.web3</code>. Then name must contain only one dot which must be at the beginning.</li>
+<li><code v-pre>_symbol</code>: The symbol is usually TLD name in uppercase letters. Symbol is only needed because the ERC-721 standard requires it, otherwise it&#x27;s irrelevant.</li>
+<li><code v-pre>_tldOwner</code>: The owner of the newly created TLD. Can be a different entity than the <code v-pre>msg.sender</code>. TLD owner will receive payments for all newly created domains under this TLD.</li>
+<li><code v-pre>_domainPrice</code>: Price for creating new domains under this TLD. TLD owner can change this at any time in the TLD contract.</li>
+<li><code v-pre>_buyingEnabled</code>: Should buying domains be enabled from the start or not.</li>
+</ul>
+<p>Output:</p>
+<ul>
+<li>Newly created TLD address</li>
+</ul>
+<doc-anchor-target id="changeroyalty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeroyalty">#</doc-anchor-trigger>
+        <span><code v-pre>changeRoyalty</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the initial royalty amount which is set when a new TLD is created. The royalty amount can then be changed separately in each TLD contract by the Factory owner.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeRoyalty(uint256 _royalty) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_royalty</code>: royalty amount in wei</li>
+</ul>
+<doc-anchor-target id="changeprice">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprice">#</doc-anchor-trigger>
+        <span><code v-pre>changePrice</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the price for minting new TLDs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changePrice(uint256 _price) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_price</code>: TLD price in wei</li>
+</ul>
+<doc-anchor-target id="changeprojectname">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprojectname">#</doc-anchor-trigger>
+        <span><code v-pre>changeProjectName</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the project name (this shows in every domain default NFT image).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeProjectName(string memory _newProjectName) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_newProjectName</code>: New project name</li>
+</ul>
+<doc-anchor-target id="changenamemaxlength">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changenamemaxlength">#</doc-anchor-trigger>
+        <span><code v-pre>changeNameMaxLength</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the max name length for new TLDs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeNameMaxLength(uint256 _maxLength) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_maxLength</code>: Max TLD name length</li>
+</ul>
+<doc-anchor-target id="changeforbiddentldsaddress">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeforbiddentldsaddress">#</doc-anchor-trigger>
+        <span><code v-pre>changeForbiddenTldsAddress</code></span>
+    </h3>
+</doc-anchor-target>
+<p>When a new TLD is created, a TLD Factory needs to check with the Forbidden TLDs contract whether the TLD name is still available. If it is, the factory also needs to register the newly created TLD name with the Forbidden TLDs contract.</p>
+<p>In order to do that, the Forbidden TLDs address needs to be specified in the factory contract.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeForbiddenTldsAddress(address _forbiddenTlds) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_forbiddenTlds</code>: The address of the Forbidden TLDs contract</li>
+</ul>
+<doc-anchor-target id="togglebuyingtlds">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#togglebuyingtlds">#</doc-anchor-trigger>
+        <span><code v-pre>toggleBuyingTlds</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can either start or stop buying TLDs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function toggleBuyingTlds() public onlyOwner</code></pre>
+</doc-codeblock></div>
 
 
 
@@ -273,6 +501,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "TLD Factory Contract", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "TLD Factory Contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

@@ -6,21 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Forbidden and already-used TLDs contract | Punk Domains Docs</title>
-    <meta name="title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta name="description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model)." />
+    <title>TLD addresses | Punk Domains Docs</title>
+    <meta name="title" content="TLD addresses | Punk Domains Docs">
+    <meta name="description" content=".gnosis: 0xbdacf94ddcab51c39c2dd50bffee60bb8021949a" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/contracts/forbidden-tlds/">
-    <meta property="og:title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta property="og:description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model).">
+    <meta property="og:url" content="https://docs.punk.domains/addresses/tld-addresses/">
+    <meta property="og:title" content="TLD addresses | Punk Domains Docs">
+    <meta property="og:description" content=".gnosis: 0xbdacf94ddcab51c39c2dd50bffee60bb8021949a">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/contracts/forbidden-tlds/">
-    <meta property="twitter:title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta property="twitter:description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model).">
+    <meta property="twitter:url" content="https://docs.punk.domains/addresses/tld-addresses/">
+    <meta property="twitter:title" content="TLD addresses | Punk Domains Docs">
+    <meta property="twitter:description" content=".gnosis: 0xbdacf94ddcab51c39c2dd50bffee60bb8021949a">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -30,7 +30,6 @@
     <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699906849276" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699906849276" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699906849276" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -189,117 +188,55 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="forbidden-and-already-used-tlds-contract" class="break-words">
+<doc-anchor-target id="tld-addresses" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#forbidden-and-already-used-tlds-contract">#</doc-anchor-trigger>
-        <span>Forbidden and already-used TLDs contract</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tld-addresses">#</doc-anchor-trigger>
+        <span>TLD addresses</span>
     </h1>
 </doc-anchor-target>
-<p>The Punk Domains architecture allows for multiple TLD factories (each with a different business model). In order to avoid colisions (two factories must not issue the same TLD), a separate contract is needed which keeps track of already-used and forbidden TLD names.</p>
-<p><strong>Contract code:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkForbiddenTlds.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkForbiddenTlds.sol</a></p>
-<doc-anchor-target id="read-methods">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#read-methods">#</doc-anchor-trigger>
-        <span>Read methods</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="istldforbidden">
+<doc-anchor-target id="gnosis-chain">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#istldforbidden">#</doc-anchor-trigger>
-        <span><code v-pre>isTldForbidden</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#gnosis-chain">#</doc-anchor-trigger>
+        <span>Gnosis Chain</span>
     </h3>
 </doc-anchor-target>
-<p>The function tells you whether a TLD name has already been used or is forbidden to use (like <code v-pre>.eth</code>), or not. If not, a TLD Factory can create it.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function isTldForbidden(string memory _name) public view returns (bool)</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
 <ul>
-<li>TLD name (for example: <code v-pre>.web3</code>)</li>
+<li>.gnosis: <a href="https://blockscout.com/xdai/mainnet/address/0xbdacf94ddcab51c39c2dd50bffee60bb8021949a">0xbdacf94ddcab51c39c2dd50bffee60bb8021949a</a></li>
+<li>.xdai: <a href="https://blockscout.com/xdai/mainnet/address/0xefbe0b46649b7a0f1e1d49cca98ad9cf6bcfb096">0xefbe0b46649b7a0f1e1d49cca98ad9cf6bcfb096</a></li>
 </ul>
-<p>Output:</p>
-<ul>
-<li>Boolean (<code v-pre>true</code> or <code v-pre>false</code>)</li>
-</ul>
-<doc-anchor-target id="factoryaddresses">
+<doc-anchor-target id="optimism">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#factoryaddresses">#</doc-anchor-trigger>
-        <span><code v-pre>factoryAddresses</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#optimism">#</doc-anchor-trigger>
+        <span>Optimism</span>
     </h3>
 </doc-anchor-target>
-<p>This function returns whether a certain address has been whitelisted (as a factory address), or not.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function factoryAddresses(address) public view returns (bool)</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
 <ul>
-<li>TLD address</li>
+<li>.wagmi: <a href="https://optimistic.etherscan.io/address/0xBDACF94dDCAB51c39c2dD50BffEe60Bb8021949a">0xBDACF94dDCAB51c39c2dD50BffEe60Bb8021949a</a></li>
+<li>.optimism: <a href="https://optimistic.etherscan.io/address/0xeFBE0b46649B7A0F1e1D49CCa98aD9CF6bcFB096">0xeFBE0b46649B7A0F1e1D49CCa98aD9CF6bcFB096</a></li>
+<li>.spartan: <a href="https://optimistic.etherscan.io/address/0x4da0a46cc54439b1dE0203d376b98D988697091d">0x4da0a46cc54439b1dE0203d376b98D988697091d</a></li>
 </ul>
-<p>Output:</p>
-<ul>
-<li>Boolean (<code v-pre>true</code> or <code v-pre>false</code>)</li>
-</ul>
-<doc-anchor-target id="owner-methods">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-methods">#</doc-anchor-trigger>
-        <span>Owner methods</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="addforbiddentld">
+<doc-anchor-target id="polygon-pos-chain">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#addforbiddentld">#</doc-anchor-trigger>
-        <span><code v-pre>addForbiddenTld</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#polygon-pos-chain">#</doc-anchor-trigger>
+        <span>Polygon PoS Chain</span>
     </h3>
 </doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can add a TLD name which can&#x27;t be used by any TLD Factory for TLD registration.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function ownerAddForbiddenTld(string memory _name) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
 <ul>
-<li><code v-pre>_name</code>: a TLD name (for example, <code v-pre>.eth</code>)</li>
+<li>.web3: <a href="https://polygonscan.com/address/0x46Ee2d28f4b3555492296bfE1509Ea22FF47b71e">0x46Ee2d28f4b3555492296bfE1509Ea22FF47b71e</a></li>
+<li>.polygon: <a href="https://polygonscan.com/address/0xdf9559841F6ee36C6a86FE7c058bD8736E132c5f">0xdf9559841F6ee36C6a86FE7c058bD8736E132c5f</a></li>
+<li>.ape: <a href="https://polygonscan.com/address/0xBe3655C0e457DF3A551E5d0Ecee5D6a6E69E3E8d">0xBe3655C0e457DF3A551E5d0Ecee5D6a6E69E3E8d</a></li>
+<li>.poly: <a href="https://polygonscan.com/address/0x760D82D92f3A76d961961D6607E062Ca10b1C172">0x760D82D92f3A76d961961D6607E062Ca10b1C172</a></li>
+<li>.degen: <a href="https://polygonscan.com/address/0x614cD3F6751ABD5a8d33C04AdE6dFeF58b521820">0x614cD3F6751ABD5a8d33C04AdE6dFeF58b521820</a></li>
 </ul>
-<doc-anchor-target id="removeforbiddentld">
+<doc-anchor-target id="arbitrum">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#removeforbiddentld">#</doc-anchor-trigger>
-        <span><code v-pre>removeForbiddenTld</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#arbitrum">#</doc-anchor-trigger>
+        <span>Arbitrum</span>
     </h3>
 </doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can remove a TLD name from the forbidden list.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function removeForbiddenTld(string memory _name) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
 <ul>
-<li><code v-pre>_name</code>: a TLD name (for example, <code v-pre>.eth</code>)</li>
-</ul>
-<doc-anchor-target id="addfactoryaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#addfactoryaddress">#</doc-anchor-trigger>
-        <span><code v-pre>addFactoryAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can add a new TLD Factory address. Every whitelisted TLD Factory can add TLD names to the forbidden list.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function addFactoryAddress(address _fAddr) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_fAddr </code>: a TLD factory address</li>
-</ul>
-<doc-anchor-target id="removefactoryaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#removefactoryaddress">#</doc-anchor-trigger>
-        <span><code v-pre>removeFactoryAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can remove an existing TLD Factory address.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function removeFactoryAddress(address _fAddr) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_fAddr </code>: a TLD factory address</li>
+<li>.arbitrum: <a href="https://arbiscan.io/address/0xc257E17e7978dbC54661C2E5928aa6bF7D11B6D3">0xc257E17e7978dbC54661C2E5928aa6bF7D11B6D3</a></li>
+<li>.arbi: <a href="https://arbiscan.io/address/0xe0789b1AEA5a53673aDD3822Cb8bFEB5c48D8F71">0xe0789b1AEA5a53673aDD3822Cb8bFEB5c48D8F71</a></li>
 </ul>
 
 
@@ -312,23 +249,16 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/about/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/addresses/contract-addresses/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">About Punk Domains</span>
+                <span class="block mt-1">Factory addresses</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/tld-factory/">
-            <span>
-                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">TLD factory contract</span>
-            </span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-        </a>
     </div>
 </nav>
 
@@ -373,6 +303,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Forbidden and already-used TLDs contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "TLD addresses", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

@@ -6,32 +6,33 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>TLD Factory Contract</title>
-    <meta name="title" content="TLD Factory Contract">
+    <title>TLD factory contract | Punk Domains Docs</title>
+    <meta name="title" content="TLD factory contract | Punk Domains Docs">
     <meta name="description" content="TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs..." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://docs.punk.domains/contracts/tld-factory/">
-    <meta property="og:title" content="TLD Factory Contract">
+    <meta property="og:title" content="TLD factory contract | Punk Domains Docs">
     <meta property="og:description" content="TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs...">
     <meta property="og:image" content="https://docs.punk.domains/static/domain-image-example.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://docs.punk.domains/contracts/tld-factory/">
-    <meta property="twitter:title" content="TLD Factory Contract">
+    <meta property="twitter:title" content="TLD factory contract | Punk Domains Docs">
     <meta property="twitter:description" content="TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs...">
     <meta property="twitter:image" content="https://docs.punk.domains/static/domain-image-example.png">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="/resources/css/retype.css?v=1.11.2.699899608396" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/static/favicon.png" rel="icon" />
+    <link href="/resources/css/retype.css?v=1.11.2.699906849276" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699899608396" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699906849276" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699899608396" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699899608396" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699906849276" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699906849276" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -47,6 +48,10 @@
         <div class="flex items-center justify-between h-full py-2 md:w-75">
             <div class="flex items-center px-2 md:px-6">
                 <a id="docs-site-logo" href="/" class="flex items-center leading-snug text-2xl">
+                    <span class="w-10 mr-2 flex-grow-0 flex-shrink-0 overflow-hidden">
+                        <img class="max-h-10 dark:hidden md:inline-block" src="/static/logo512.png">
+                        <img class="max-h-10 hidden dark:inline-block" src="/static/logo-white512.png">
+                    </span>
                     <span class="dark:text-white font-semibold line-clamp-1 md:line-clamp-2">Punk Domains</span>
                 </a><span class="hidden px-2 py-1 ml-4 text-sm font-semibold leading-none text-root-logo-label-text bg-root-logo-label-bg rounded-sm md:inline-block">Docs</span>
             </div>
@@ -59,7 +64,14 @@
             <nav class="hidden md:flex">
     <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
         <li class="md:mr-6">
-            <a class="block py-2 text-sm text-gray-400 whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 md:mb-0" href="https://retype.com/guides/getting-started/">Getting Started</a>
+            <a class="inline-flex items-center py-2 md:mb-0 text-sm text-gray-400 whitespace-nowrap transition-colors duration-200 ease-linear md:text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://punk.domains/" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mb-px mr-1" width="18" height="18" viewBox="0 0 24 24" role="presentation">
+                    <g fill="currentColor">
+                        <path fill-rule="evenodd" d="M3 3.25c0-.966.784-1.75 1.75-1.75h5.5a.75.75 0 010 1.5h-5.5a.25.25 0 00-.25.25v17.5c0 .138.112.25.25.25h5.5a.75.75 0 010 1.5h-5.5A1.75 1.75 0 013 20.75V3.25zm16.006 9.5l-3.3 3.484a.75.75 0 001.088 1.032l4.5-4.75a.75.75 0 000-1.032l-4.5-4.75a.75.75 0 00-1.088 1.032l3.3 3.484H10.75a.75.75 0 000 1.5h8.256z"/>
+                    </g>
+                </svg>
+                <span>Go to Punk Domains app</span>
+            </a>
         </li>
     </ul>
 </nav>
@@ -147,7 +159,7 @@
                 <nav>
                     <ul class="flex flex-wrap justify-center items-center">
                         <li class="mr-6">
-                            <a class="block py-1 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://retype.com/guides/getting-started/">Getting Started</a>
+                            <a class="block py-1 text-sm whitespace-nowrap transition-colors duration-200 ease-linear text-blue-500 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200" href="https://punk.domains/">Go to Punk Domains app</a>
                         </li>
                     </ul>
                 </nav>
@@ -182,7 +194,7 @@
 <doc-anchor-target id="tld-factory-contract" class="break-words">
     <h1>
         <doc-anchor-trigger class="header-anchor-trigger" to="#tld-factory-contract">#</doc-anchor-trigger>
-        <span>TLD Factory Contract</span>
+        <span>TLD factory contract</span>
     </h1>
 </doc-anchor-target>
 <p>TLD Factory is owned by Punk Domains governance. This contract is responsible for issuing new TLDs and keeping a list of all currently existing TLDs and their respective addresses.</p>
@@ -280,10 +292,10 @@
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-solidity"><code v-pre class="language-solidity">function projectName() public view returns(string)</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="public-write-method">
+<doc-anchor-target id="write-method">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#public-write-method">#</doc-anchor-trigger>
-        <span>Public Write method</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#write-method">#</doc-anchor-trigger>
+        <span>Write method</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="createtld">
@@ -314,10 +326,10 @@
 <ul>
 <li>Newly created TLD address</li>
 </ul>
-<doc-anchor-target id="owner-write-methods">
+<doc-anchor-target id="owner-methods">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-write-methods">#</doc-anchor-trigger>
-        <span>Owner Write methods</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-methods">#</doc-anchor-trigger>
+        <span>Owner methods</span>
     </h2>
 </doc-anchor-target>
 <doc-anchor-target id="ownercreatetld">
@@ -453,7 +465,7 @@
         <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/tld-contract/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">TLD Contract</span>
+                <span class="block mt-1">TLD template contract</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -501,6 +513,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "TLD Factory Contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "TLD factory contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

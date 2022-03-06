@@ -6,21 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>About Punk Domains</title>
-    <meta name="title" content="About Punk Domains">
-    <meta name="description" content="Punk Domains allows you to register a domain name attached to your account address." />
+    <title>TLD Contract</title>
+    <meta name="title" content="TLD Contract">
+    <meta name="description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/about/">
-    <meta property="og:title" content="About Punk Domains">
-    <meta property="og:description" content="Punk Domains allows you to register a domain name attached to your account address.">
+    <meta property="og:url" content="https://docs.punk.domains/contracts/tld-contract/">
+    <meta property="og:title" content="TLD Contract">
+    <meta property="og:description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/about/">
-    <meta property="twitter:title" content="About Punk Domains">
-    <meta property="twitter:description" content="Punk Domains allows you to register a domain name attached to your account address.">
+    <meta property="twitter:url" content="https://docs.punk.domains/contracts/tld-contract/">
+    <meta property="twitter:title" content="TLD Contract">
+    <meta property="twitter:description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -29,6 +29,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.699899608396" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.699899608396" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.699899608396" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -176,41 +177,288 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="about-punk-domains" class="break-words">
+<doc-anchor-target id="tld-contract" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#about-punk-domains">#</doc-anchor-trigger>
-        <span>About Punk Domains</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tld-contract">#</doc-anchor-trigger>
+        <span>TLD Contract</span>
     </h1>
 </doc-anchor-target>
-<p>Punk Domains allows you to register a domain name attached to your account address.</p>
-<doc-anchor-target id="why-would-anyone-need-that">
+<p>TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.</p>
+<p><strong>See the TLD contract template here:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkTLD.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkTLD.sol</a></p>
+<doc-anchor-target id="data">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#data">#</doc-anchor-trigger>
+        <span>Data</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="domain-struct">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#why-would-anyone-need-that">#</doc-anchor-trigger>
-        <span>Why would anyone need that?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#domain-struct">#</doc-anchor-trigger>
+        <span>Domain struct</span>
     </h3>
 </doc-anchor-target>
-<p>Well, your crypto address is hard to remember. It starts with <code v-pre>0x</code>, but then continues with 40 random characters (digits from <code v-pre>0</code> to <code v-pre>9</code> and letters from <code v-pre>a</code> to <code v-pre>f</code>).</p>
-<p>If you want someone to send you tokens, sure you could send them your address and they could copy-paste it into their wallet. But wouldn&#x27;t it be great if they could just enter a domain name, like <code v-pre>techie.web3</code>, instead of the whole address?</p>
-<p>This is what they can do on punk.domains (on the Send Tokens page).</p>
-<p>Another usecase is to have a domain name as your username in various web3 dApps, games and upcoming social networks. Instead of your username being <code v-pre>0xb29…45D</code>, it could be simply <code v-pre>techie.web3</code>.</p>
-<p>An additional feature that Punk Domains provide is a browser extension that takes you to a designated URL address if you type a domain name into browser URL bar.</p>
-<doc-anchor-target id="but-isnt-all-that-what-ens-is-doing-already">
+<p>Each domain name is represented as a struct:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">struct Domain {
+	string name;
+	uint256 tokenId;
+	address holder;
+	string data;
+	string url;
+	address pfpAddress;
+	uint256 pfpTokenId;
+}</code></pre>
+</doc-codeblock></div>
+<ul>
+<li><code v-pre>name</code>: Domain name that goes before the TLD name. For example: <code v-pre>techie</code> in <code v-pre>techie.web3</code>.</li>
+<li><code v-pre>tokenId</code>: Each domain is an NFT, which means it has a unique token ID. ID numbers increment for every newly minted domain starting with <code v-pre>0</code>.</li>
+<li><code v-pre>holder</code>: The address that owns the domain. Domain also resolves to this address.</li>
+<li><code v-pre>data</code> (optional): Domain can also hold custom data in a stringified JSON object, for example: <code v-pre>{&quot;description&quot;: &quot;Some text&quot;, &quot;twitter&quot;: &quot;@techie1239&quot;, &quot;friends&quot;: [&quot;0x123...&quot;]}</code>.</li>
+<li><code v-pre>url</code> (optional): Domain holder can specify a URL that his domain redirects to for users that use Punk Domains browser extension.</li>
+<li><code v-pre>pfpAddress</code> and <code v-pre>pfpTokenId</code> (optional): Domain holder can set a default profile picture (an ERC-721 NFT that they own). This is useful for third-party integrations, for example games which would use Punk Domains for user profiles.</li>
+</ul>
+<doc-anchor-target id="read-methods">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#read-methods">#</doc-anchor-trigger>
+        <span>Read methods</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="price">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#but-isnt-all-that-what-ens-is-doing-already">#</doc-anchor-trigger>
-        <span>But isn&#x27;t all that what ENS is doing already?</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#price">#</doc-anchor-trigger>
+        <span><code v-pre>price</code></span>
     </h3>
 </doc-anchor-target>
-<p>Yes, but they only do it on Ethereum L1 and (for now) only with <code v-pre>.eth</code>. Punk Domains allows many different top-level domains (TLDs), such as <code v-pre>.web3</code>, <code v-pre>.gnosis</code>, <code v-pre>.ape</code>, <code v-pre>.opti</code> etc. And it runs on multiple chains.</p>
-<p>Punk Domains enables anyone to create a TLD, operate it and earn revenue from it. For example, a DeFi protocol like Agave could create a TLD named <code v-pre>.agave</code>, and the revenue from each domain purchase would go to Agave treasury.</p>
-<p>Punk Domains architecture is very flexible and it allows for various domain business models. The first one is a one-time domain purchase (no renewals), but new ones will be added in the future (like time-restricted domain ownership).</p>
-<doc-anchor-target id="not-just-about-domains">
+<p>Returns the price to mint a new domain.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function price() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain price in wei</li>
+</ul>
+<doc-anchor-target id="buyingenabled">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#not-just-about-domains">#</doc-anchor-trigger>
-        <span>Not just about domains</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#buyingenabled">#</doc-anchor-trigger>
+        <span><code v-pre>buyingEnabled</code></span>
     </h3>
 </doc-anchor-target>
-<p>Punk Domains is not just about domains (in the web2 sense of the word). It&#x27;s about <strong>identity</strong> in the web3 world. Domain name gives you a digital identity, and data attached to this identity strengthen it.</p>
-<p>Another thing that Punk Domains cherishes is full decentralization. The contracts are non-upgradable and don&#x27;t need any keepers (or similar outside software) to properly operate. The only thing not decentralized yet is the main factory contract ownership (the one that decides a new TLD price) - but stay tuned... <span class="docs-emoji">&#x1F609;</span></p>
+<p>If this value is set to <code v-pre>false</code>, only the TLD owner can mint new domains (for free). Otherwise anyone can mint new domains (but paid).</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function buyingEnabled() public view returns(bool)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Boolean value (<code v-pre>true</code> or <code v-pre>false</code>)</li>
+</ul>
+<doc-anchor-target id="royalty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#royalty">#</doc-anchor-trigger>
+        <span><code v-pre>royalty</code></span>
+    </h3>
+</doc-anchor-target>
+<p>For every newly minted (paid) domain name a royalty payment is taken and sent to Punk Domains governance.</p>
+<p>In case a domain is created for free by TLD owner, or if royalty is set to 0, there&#x27;s no royalty to be paid.</p>
+<p>Only Punk Domains governance can change the royalty amount. Max royalty percentage is 50%.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function royalty() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain royalty in wei</li>
+</ul>
+<doc-anchor-target id="namemaxlength">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#namemaxlength">#</doc-anchor-trigger>
+        <span><code v-pre>nameMaxLength</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the maximum length of a domain name.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function nameMaxLength() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>The number of characters that a domain name can have at maximum</li>
+</ul>
+<doc-anchor-target id="totalsupply">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#totalsupply">#</doc-anchor-trigger>
+        <span><code v-pre>totalSupply</code></span>
+    </h3>
+</doc-anchor-target>
+<p>The total number of minted domains.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function totalSupply() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>The total number of minted domains</li>
+</ul>
+<doc-anchor-target id="defaultnames">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#defaultnames">#</doc-anchor-trigger>
+        <span><code v-pre>defaultNames</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain name that the holder defined as their &quot;default&quot; for that specific TLD.</p>
+<p>Input:</p>
+<ul>
+<li>User address</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function defaultNames(address) public view returns(string memory)</code></pre>
+</doc-codeblock></div>
+<p>This may be useful for social networks and games where user has multiple domain names under the same TLD.</p>
+<p>Output:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<doc-anchor-target id="domainidsnames">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#domainidsnames">#</doc-anchor-trigger>
+        <span><code v-pre>domainIdsNames</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain name that belongs to the entered token ID.</p>
+<p>Input:</p>
+<ul>
+<li>Token ID</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function domainIdsNames(uint256) public view returns(string memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<doc-anchor-target id="domains">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#domains">#</doc-anchor-trigger>
+        <span><code v-pre>domains</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain struct data that belong to the entered domain name.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function domains(string) public view returns(Domain memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain struct data</li>
+</ul>
+<doc-anchor-target id="getdomainholder">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainholder">#</doc-anchor-trigger>
+        <span><code v-pre>getDomainHolder</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s address. If no one owns the domain (yet), the returned address is the <code v-pre>0x0</code> address.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainHolder(string memory) public view returns(address)</code></pre>
+</doc-codeblock></div>
+<p>This is useful for checking whether a domain name has been already taken or not.</p>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s address</li>
+</ul>
+<doc-anchor-target id="getdomainpfpaddress">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainpfpaddress">#</doc-anchor-trigger>
+        <span><code v-pre>getDomainPfpAddress</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s PFP address. If there&#x27;s no selected PFP (yet), the returned address is the <code v-pre>0x0</code> address.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainPfpAddress(string memory) public view returns(address)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s selected PFP address (important: the holder must of that NFT)</li>
+</ul>
+<doc-anchor-target id="getdomainpfptokenid">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainpfptokenid">#</doc-anchor-trigger>
+        <span><code v-pre>getDomainPfpTokenId</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s PFP token ID. If there&#x27;s no selected PFP (yet), the returned integer is <code v-pre>0</code>.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainPfpTokenId(string memory) public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s selected PFP token ID (important: the holder must of that NFT)</li>
+</ul>
+<doc-anchor-target id="getdomaindata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomaindata">#</doc-anchor-trigger>
+        <span><code v-pre>getDomainData</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s <strong>custom</strong> data. Note that this is different from the <code v-pre>domains</code> call which returns all domain struct data, not just the custom data string.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainData(string memory) public view returns(string memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s custom data as a stringified JSON object.</li>
+</ul>
+<doc-anchor-target id="getdomainurl">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainurl">#</doc-anchor-trigger>
+        <span><code v-pre>getDomainUrl</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s selected URL. If URL is set up, then anyone who uses Punk Domains browser extension will get redirected to the designated URL.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainUrl(string memory) public view returns(string memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s selected URL</li>
+</ul>
+<doc-anchor-target id="tokenuri">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tokenuri">#</doc-anchor-trigger>
+        <span><code v-pre>tokenURI</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Returns the domain holder&#x27;s default NFT image (each domain is an ERC-721 NFT).</p>
+<p>Input:</p>
+<ul>
+<li>Token ID</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function tokenURI(uint256) public view override returns (string memory)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>Domain holder&#x27;s selected URL</li>
+</ul>
 
 
 
@@ -222,20 +470,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/contracts/tld-factory/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Welcome</span>
+                <span class="block mt-1">TLD Factory Contract</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/forbidden-tlds/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/contract-addresses/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Forbidden and already-used TLDs contract</span>
+                <span class="block mt-1">Factory addresses</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -283,6 +531,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "About Punk Domains", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "TLD Contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

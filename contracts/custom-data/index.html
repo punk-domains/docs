@@ -6,21 +6,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Forbidden and already-used TLDs contract | Punk Domains Docs</title>
-    <meta name="title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta name="description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model)." />
+    <title>Custom data | Punk Domains Docs</title>
+    <meta name="title" content="Custom data | Punk Domains Docs">
+    <meta name="description" content="Custom data is not a separate contract. It's a string field within the Domains struct in the TLD contract" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/contracts/forbidden-tlds/">
-    <meta property="og:title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta property="og:description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model).">
+    <meta property="og:url" content="https://docs.punk.domains/contracts/custom-data/">
+    <meta property="og:title" content="Custom data | Punk Domains Docs">
+    <meta property="og:description" content="Custom data is not a separate contract. It's a string field within the Domains struct in the TLD contract">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/contracts/forbidden-tlds/">
-    <meta property="twitter:title" content="Forbidden and already-used TLDs contract | Punk Domains Docs">
-    <meta property="twitter:description" content="The Punk Domains architecture allows for multiple TLD factories (each with a different business model).">
+    <meta property="twitter:url" content="https://docs.punk.domains/contracts/custom-data/">
+    <meta property="twitter:title" content="Custom data | Punk Domains Docs">
+    <meta property="twitter:description" content="Custom data is not a separate contract. It's a string field within the Domains struct in the TLD contract">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -215,118 +215,53 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="forbidden-and-already-used-tlds-contract" class="break-words">
+<doc-anchor-target id="custom-data" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#forbidden-and-already-used-tlds-contract">#</doc-anchor-trigger>
-        <span>Forbidden and already-used TLDs contract</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-data">#</doc-anchor-trigger>
+        <span>Custom data</span>
     </h1>
 </doc-anchor-target>
-<p>The Punk Domains architecture allows for multiple TLD factories (each with a different business model). In order to avoid colisions (two factories must not issue the same TLD), a separate contract is needed which keeps track of already-used and forbidden TLD names.</p>
-<p><strong>Contract code:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkForbiddenTlds.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/PunkForbiddenTlds.sol</a></p>
-<doc-anchor-target id="read-methods">
+<p>Custom data is not a separate contract. It&#x27;s a string field within the Domains struct in the <a href="/contracts/tld-contract/">TLD contract</a>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">struct Domain {
+	string name;
+	uint256 tokenId;
+	address holder;
+	string data; // &lt;-- CUSTOM DATA
+	string url;
+	address pfpAddress;
+	uint256 pfpTokenId;
+}</code></pre>
+</doc-codeblock></div>
+<p>The purpose of custom data is to hold an arbitrary amount of various data (stored as a stringified JSON object).</p>
+<p>Because the custom data field is unstructured, the Punk Domains community has to define a common standard for structuring JSON data in order to avoid parsing issues.</p>
+<doc-anchor-target id="custom-data-standard">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#read-methods">#</doc-anchor-trigger>
-        <span>Read methods</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#custom-data-standard">#</doc-anchor-trigger>
+        <span>Custom data standard</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="istldforbidden">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#istldforbidden">#</doc-anchor-trigger>
-        <span><code v-pre>isTldForbidden</code></span>
-    </h3>
-</doc-anchor-target>
-<p>The function tells you whether a TLD name has already been used or is forbidden to use (like <code v-pre>.eth</code>), or not. If not, a TLD Factory can create it.</p>
+<p>This section holds the official standard for structuring the custom data JSON object. Note that the standard may change over time, but we&#x27;ll try to make sure that changes are always backward compatible.</p>
+<p><strong>Custom data JSON structure</strong> (example for <code v-pre>techie.web3</code>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function isTldForbidden(string memory _name) public view returns (bool)</code></pre>
+<pre class="language-json"><code v-pre class="language-json">{
+  &quot;emails&quot;: [&quot;tempe.techie@protonmail.com&quot;], // possible to add multiple emails
+  &quot;twitter&quot;: [&quot;PunkDomains&quot;], // possible to add multiple twitter handles
+  &quot;subdomains&quot;: {
+    &quot;sandbox&quot;: { // sandbox.techie.web3 - in case I want to have a username with different data (like PFP) in the Sandbox metaverse
+      &quot;address&quot;: &quot;0x123...&quot;,
+      &quot;pfpTokenAddress&quot;: &quot;0x098...&quot;,
+      &quot;pfpTokenId&quot;: 22 // PFP ownership needs to be verified on front-end
+    }
+  },
+  &quot;chainAddresses&quot;: { // if user wants to define different addresses on different chains (only one address per chain)
+    &quot;10&quot;: &quot;0xa5b6...&quot;,
+    &quot;100&quot;: &quot;0xc8d9...&quot;,
+    &quot;42161&quot;: &quot;0xe2f3...&quot;,
+  }
+}</code></pre>
 </doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li>TLD name (for example: <code v-pre>.web3</code>)</li>
-</ul>
-<p>Output:</p>
-<ul>
-<li>Boolean (<code v-pre>true</code> or <code v-pre>false</code>)</li>
-</ul>
-<doc-anchor-target id="factoryaddresses">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#factoryaddresses">#</doc-anchor-trigger>
-        <span><code v-pre>factoryAddresses</code></span>
-    </h3>
-</doc-anchor-target>
-<p>This function returns whether a certain address has been whitelisted (as a factory address), or not.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function factoryAddresses(address) public view returns (bool)</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li>TLD address</li>
-</ul>
-<p>Output:</p>
-<ul>
-<li>Boolean (<code v-pre>true</code> or <code v-pre>false</code>)</li>
-</ul>
-<doc-anchor-target id="owner-methods">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#owner-methods">#</doc-anchor-trigger>
-        <span>Owner methods</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="addforbiddentld">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#addforbiddentld">#</doc-anchor-trigger>
-        <span><code v-pre>addForbiddenTld</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can add a TLD name which can&#x27;t be used by any TLD Factory for TLD registration.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function ownerAddForbiddenTld(string memory _name) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_name</code>: a TLD name (for example, <code v-pre>.eth</code>)</li>
-</ul>
-<doc-anchor-target id="removeforbiddentld">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#removeforbiddentld">#</doc-anchor-trigger>
-        <span><code v-pre>removeForbiddenTld</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can remove a TLD name from the forbidden list.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function removeForbiddenTld(string memory _name) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_name</code>: a TLD name (for example, <code v-pre>.eth</code>)</li>
-</ul>
-<doc-anchor-target id="addfactoryaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#addfactoryaddress">#</doc-anchor-trigger>
-        <span><code v-pre>addFactoryAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can add a new TLD Factory address. Every whitelisted TLD Factory can add TLD names to the forbidden list.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function addFactoryAddress(address _fAddr) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_fAddr </code>: a TLD factory address</li>
-</ul>
-<doc-anchor-target id="removefactoryaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#removefactoryaddress">#</doc-anchor-trigger>
-        <span><code v-pre>removeFactoryAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Contract owner (Punk Domains governance) can remove an existing TLD Factory address.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function removeFactoryAddress(address _fAddr) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_fAddr </code>: a TLD factory address</li>
-</ul>
+<p>Note that <strong>comments should be excluded</strong> from your custom data. They are present in the above example just to provide some more information on the structure.</p>
 
 
 
@@ -338,20 +273,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/faq/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/contracts/tld-contract/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">FAQ</span>
+                <span class="block mt-1">TLD template contract</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/tld-factory/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/addresses/contract-addresses/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">TLD factory contract</span>
+                <span class="block mt-1">Factory addresses</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -399,6 +334,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Forbidden and already-used TLDs contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Custom data", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

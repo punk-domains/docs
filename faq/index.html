@@ -27,11 +27,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.700415445985" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.700867486602" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.700415445985" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.700867486602" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.700415445985" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.700867486602" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -269,108 +269,135 @@
         <span>4. Can I use a domain to directly interact with wallets like MetaMask?</span>
     </h3>
 </doc-anchor-target>
+<p>Punk Domains is not yet supported on MetaMask or other wallet providers, but we&#x27;re already in talks with some of them to integrate Punk Domains.</p>
+<p>In the mean time, you can use domains to send tokens through the Send Tokens page on the Punk Domains website.</p>
 <doc-anchor-target id="5-how-is-this-different-to-ens">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#5-how-is-this-different-to-ens">#</doc-anchor-trigger>
         <span>5. How is this different to ENS?</span>
     </h3>
 </doc-anchor-target>
+<p>Punk Domains is an alternative to ENS. But what makes it different is a) support for multiple crypto TLDs (like .web3, .optimism, .ape, etc.) and b) being deployed on four different blockchains (Polygon, Arbitrum, Optimism, Gnosis Chain).</p>
+<p>Because Punk Domains is present on L2s and sidechains, it makes minting domains, and doing other actions such as updating data and transfering domains, much cheaper than doing the same actions with ENS on L1.</p>
 <doc-anchor-target id="6-who-can-own-a-tld">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#6-who-can-own-a-tld">#</doc-anchor-trigger>
         <span>6. Who can own a TLD?</span>
     </h3>
 </doc-anchor-target>
+<p>A top-level domain (TLD, or domain extension) can be owned by anyone. The owner of the TLD can enable/disable public domain minting, can set domain price, and earns proceeds from domain mintings.</p>
 <doc-anchor-target id="7-is-ownership-of-a-tld-permanent">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#7-is-ownership-of-a-tld-permanent">#</doc-anchor-trigger>
         <span>7. Is ownership of a TLD permanent?</span>
     </h3>
 </doc-anchor-target>
+<p>Currently, TLD ownership is permanent (of course, an owner can transfer ownership to another address). In the future we&#x27;ll add ability to have renewable TLDs or to lend a TLD.</p>
 <doc-anchor-target id="8-how-long-is-a-tld-valid-for-once-minted">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#8-how-long-is-a-tld-valid-for-once-minted">#</doc-anchor-trigger>
         <span>8. How long is a TLD valid for once minted?</span>
     </h3>
 </doc-anchor-target>
+<p>A TLD is valid forever.</p>
 <doc-anchor-target id="9-how-to-mint-a-tld">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#9-how-to-mint-a-tld">#</doc-anchor-trigger>
         <span>9. How to mint a TLD?</span>
     </h3>
 </doc-anchor-target>
+<p>The Punk Domains governance (right now it&#x27;s centralized) can decide whether anyone can mint a TLD (for a price), or not. Right now public minting is disabled, so new TLDs can only be created by the governance.</p>
 <doc-anchor-target id="10-what-is-the-cost-to-mint-a-tld">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#10-what-is-the-cost-to-mint-a-tld">#</doc-anchor-trigger>
         <span>10. What is the cost to mint a TLD?</span>
     </h3>
 </doc-anchor-target>
+<p>Currently, public minting of a TLD is disabled. In order to get a TLD, please reach out to us via Discord.</p>
 <doc-anchor-target id="11-is-ownership-of-a-domain-name-permanent">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#11-is-ownership-of-a-domain-name-permanent">#</doc-anchor-trigger>
         <span>11. Is ownership of a domain name permanent?</span>
     </h3>
 </doc-anchor-target>
+<p>Domain ownership is permanent. In the future we&#x27;ll develop additional features that will allow for renewable domains, or to lend a domain (similar as with TLDs).</p>
 <doc-anchor-target id="12-how-long-is-a-domain-name-valid-for-once-minted">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#12-how-long-is-a-domain-name-valid-for-once-minted">#</doc-anchor-trigger>
         <span>12. How long is a domain name valid for once minted?</span>
     </h3>
 </doc-anchor-target>
+<p>A minted domain name is valid forever.</p>
 <doc-anchor-target id="13-how-to-mint-a-domain-name">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#13-how-to-mint-a-domain-name">#</doc-anchor-trigger>
         <span>13. How to mint a domain name?</span>
     </h3>
 </doc-anchor-target>
+<p>The easiest way to mint a domain is through the Punk Domains website (on the home page).</p>
+<p>But you can also do it through a block explorer like PolygonScan, ArbiScan, Optimism Etherscan, and Blockscout. TLD contracts are verified on all these block explorers, which means you can use the UI that they provide for interracting with smart contracts.</p>
 <doc-anchor-target id="14-what-are-the-supported-blockchains">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#14-what-are-the-supported-blockchains">#</doc-anchor-trigger>
         <span>14. What are the supported blockchains?</span>
     </h3>
 </doc-anchor-target>
+<p>The supported blockchains are (by alphabetical order):</p>
+<ul>
+<li>Arbitrum One</li>
+<li>Gnosis Chain</li>
+<li>Optimism</li>
+<li>Polygon PoS Chain</li>
+</ul>
 <doc-anchor-target id="15-will-there-be-support-for-non-evm-compatible-chains-like-solana">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#15-will-there-be-support-for-non-evm-compatible-chains-like-solana">#</doc-anchor-trigger>
         <span>15. Will there be support for non EVM compatible chains like Solana?</span>
     </h3>
 </doc-anchor-target>
+<p>We are currently not planning to support non-EVM chains.</p>
 <doc-anchor-target id="16-what-is-the-cost-to-mint-a-domain-name">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#16-what-is-the-cost-to-mint-a-domain-name">#</doc-anchor-trigger>
         <span>16. What is the cost to mint a domain name?</span>
     </h3>
 </doc-anchor-target>
+<p>Domain prices are set by TLD owners (for each TLD separately).</p>
 <doc-anchor-target id="17-can-i-send-tokens-to-a-domain-name">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#17-can-i-send-tokens-to-a-domain-name">#</doc-anchor-trigger>
         <span>17. Can I send tokens to a domain name?</span>
     </h3>
 </doc-anchor-target>
+<p>Yes, currently this is only possible through the Punk Domains website (see the Send Tokens page). We are working with 3rd party wallets to integrate support for Punk Domains.</p>
 <doc-anchor-target id="18-can-i-send-nfts-to-a-domain-name">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#18-can-i-send-nfts-to-a-domain-name">#</doc-anchor-trigger>
         <span>18. Can I send NFTs to a domain name?</span>
     </h3>
 </doc-anchor-target>
+<p>Currently, only sending selected ERC-20 tokens is supported, but we will soon enable other transfers such as sending NFTs (ERC-721 and ERC-1155).</p>
 <doc-anchor-target id="19-what-happens-if-i-send-tokens-nfts-to-a-domain-name-that-is-not-minted">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#19-what-happens-if-i-send-tokens-nfts-to-a-domain-name-that-is-not-minted">#</doc-anchor-trigger>
         <span>19. What happens if I send tokens/ NFTs to a domain name that is not minted?</span>
     </h3>
 </doc-anchor-target>
+<p>This is not possible, because a non-minted domain&#x27;s &quot;holder&quot; is the 0x0 address, and our front-end does not allow sending tokens to the 0x0 address. If you enter a non-existing domain into the Send Tokens page, you&#x27;ll receive an error (and no transaction will be made).</p>
 <doc-anchor-target id="20-can-i-transfer-ownership-of-a-minted-tld-or-domain">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#20-can-i-transfer-ownership-of-a-minted-tld-or-domain">#</doc-anchor-trigger>
         <span>20. Can I transfer ownership of a minted TLD or Domain?</span>
     </h3>
 </doc-anchor-target>
+<p>Yes.</p>
 <doc-anchor-target id="21-will-there-be-a-marketplace-for-minted-domain-names">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#21-will-there-be-a-marketplace-for-minted-domain-names">#</doc-anchor-trigger>
         <span>21. Will there be a marketplace for minted domain names?</span>
     </h3>
 </doc-anchor-target>
+<p>This is in our roadmap, yes.</p>
 
 
 

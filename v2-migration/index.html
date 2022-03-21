@@ -27,11 +27,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.701210398591" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.701214621261" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701210398591" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701214621261" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701210398591" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701214621261" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -264,6 +264,10 @@
 <p>Away from the very technical subjects and onto something we think you&#x27;ll all love! Now <strong>you can get paid for referring</strong> Punk Domains to others!</p>
 <p>Each TLD will now have a referral system, which means that a certain percentage of a domain mint payment could go to a referrer (if TLD owner sets the referral fee above 0%).</p>
 <p>The <strong>default</strong> referral fee is 10%, but the owner can set it to any number between 0% and 50%. The TLDs owned by Punk Domains will have the referral fee at 10% at the start.</p>
+<blockquote>
+<p>How do referrals work on Punk Domains website?</p>
+<p>Simple! Just add <code v-pre>?ref=0xYourAddress</code> or <code v-pre>?ref=your.domain</code> to the URL and the website will remember you as a referrer. So next time you mint a domain (on v2), you should be able to see in block explorer that you have received a referral fee (on testnets it&#x27;s 10%).</p>
+</blockquote>
 <doc-anchor-target id="v2-deployment">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#v2-deployment">#</doc-anchor-trigger>

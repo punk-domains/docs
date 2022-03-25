@@ -25,12 +25,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.701463266335" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.701562413185" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701463266335" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701562413185" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701463266335" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.701463266335" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701562413185" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.701562413185" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -242,19 +242,15 @@
 	uint256 tokenId;
 	address holder;
 	string data;
-	string url;
-	address pfpAddress;
-	uint256 pfpTokenId;
 }</code></pre>
 </doc-codeblock></div>
 <ul>
 <li><code v-pre>name</code>: Domain name that goes before the TLD name. For example: <code v-pre>techie</code> in <code v-pre>techie.web3</code>.</li>
 <li><code v-pre>tokenId</code>: Each domain is an NFT, which means it has a unique token ID. ID numbers increment for every newly minted domain starting with <code v-pre>0</code>.</li>
 <li><code v-pre>holder</code>: The address that owns the domain. Domain also resolves to this address.</li>
-<li><code v-pre>data</code> (optional): Domain can also hold custom data in a stringified JSON object, for example: <code v-pre>{&quot;description&quot;: &quot;Some text&quot;, &quot;twitter&quot;: &quot;@techie1239&quot;, &quot;friends&quot;: [&quot;0x123...&quot;]}</code>.</li>
-<li><code v-pre>url</code> (optional): Domain holder can specify a URL that his domain redirects to for users that use Punk Domains browser extension.</li>
-<li><code v-pre>pfpAddress</code> and <code v-pre>pfpTokenId</code> (optional): Domain holder can set a default profile picture (an ERC-721 NFT that they own). This is useful for third-party integrations, for example games which would use Punk Domains for user profiles.</li>
+<li><code v-pre>data</code> (optional): Domain can also hold custom data in a stringified JSON object, for example: <code v-pre>{&quot;url&quot;: &quot;https://my.homepage&quot;, &quot;image&quot;: {&quot;address&quot;: &quot;0x123...orUrl&quot;, &quot;tokenId&quot;: 22}, &quot;description&quot;: &quot;Some text&quot;, &quot;twitter&quot;: &quot;@techie1239&quot;, &quot;friends&quot;: [&quot;0x123...&quot;]}</code>.</li>
 </ul>
+<p>Read more about custom data <a href="../custom-data/">here</a>.</p>
 <doc-anchor-target id="read-methods">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#read-methods">#</doc-anchor-trigger>
@@ -407,42 +403,6 @@
 <ul>
 <li>Domain holder&#x27;s address</li>
 </ul>
-<doc-anchor-target id="getdomainpfpaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainpfpaddress">#</doc-anchor-trigger>
-        <span><code v-pre>getDomainPfpAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Returns the domain holder&#x27;s PFP address. If there&#x27;s no selected PFP (yet), the returned address is the <code v-pre>0x0</code> address.</p>
-<p>Input:</p>
-<ul>
-<li>Domain name</li>
-</ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainPfpAddress(string memory) public view returns(address)</code></pre>
-</doc-codeblock></div>
-<p>Output:</p>
-<ul>
-<li>Domain holder&#x27;s selected PFP address (important: the holder must of that NFT)</li>
-</ul>
-<doc-anchor-target id="getdomainpfptokenid">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainpfptokenid">#</doc-anchor-trigger>
-        <span><code v-pre>getDomainPfpTokenId</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Returns the domain holder&#x27;s PFP token ID. If there&#x27;s no selected PFP (yet), the returned integer is <code v-pre>0</code>.</p>
-<p>Input:</p>
-<ul>
-<li>Domain name</li>
-</ul>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainPfpTokenId(string memory) public view returns(uint256)</code></pre>
-</doc-codeblock></div>
-<p>Output:</p>
-<ul>
-<li>Domain holder&#x27;s selected PFP token ID (important: the holder must of that NFT)</li>
-</ul>
 <doc-anchor-target id="getdomaindata">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#getdomaindata">#</doc-anchor-trigger>
@@ -461,23 +421,19 @@
 <ul>
 <li>Domain holder&#x27;s custom data as a stringified JSON object.</li>
 </ul>
-<doc-anchor-target id="getdomainurl">
+<doc-anchor-target id="getfactoryowner">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#getdomainurl">#</doc-anchor-trigger>
-        <span><code v-pre>getDomainUrl</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#getfactoryowner">#</doc-anchor-trigger>
+        <span><code v-pre>getFactoryOwner</code></span>
     </h3>
 </doc-anchor-target>
-<p>Returns the domain holder&#x27;s selected URL. If URL is set up, then anyone who uses Punk Domains browser extension will get redirected to the designated URL.</p>
-<p>Input:</p>
-<ul>
-<li>Domain name</li>
-</ul>
+<p>Returns the address that controls the TLD Factory. This address is effectively Punk Domains governance.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function getDomainUrl(string memory) public view returns(string memory)</code></pre>
+<pre class="language-solidity"><code v-pre class="language-solidity">function getFactoryOwner() public view returns(address)</code></pre>
 </doc-codeblock></div>
 <p>Output:</p>
 <ul>
-<li>Domain holder&#x27;s selected URL</li>
+<li>Address that owns the Factory contract</li>
 </ul>
 <doc-anchor-target id="tokenuri">
     <h3>
@@ -503,8 +459,66 @@
         <span>Write methods</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="editdefaultdomain">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#editdefaultdomain">#</doc-anchor-trigger>
+        <span><code v-pre>editDefaultDomain</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Through this function, a user can set one of their domains as their default domain (within the TLD that&#x27;s defined by that contract, of course).</p>
+<p>Input:</p>
 <ul>
-<li>TODO...</li>
+<li>Domain name to be set as default</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function editDefaultDomain(string calldata _domainName) external</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>DefaultDomainChanged</code> event</li>
+</ul>
+<doc-anchor-target id="editdata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#editdata">#</doc-anchor-trigger>
+        <span><code v-pre>editData</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Function where user can edit custom data. Thread carefully, so that data is not accidentally deleted.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+<li>Data (stringified JSON object)</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function editData(string calldata _domainName, string calldata _data) external</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>DataChanged</code> event</li>
+</ul>
+<doc-anchor-target id="mint">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mint">#</doc-anchor-trigger>
+        <span><code v-pre>mint</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Function to mint a new domain for a specific address (owner). Note that TLD owner can call this function even if public minting is disabled.</p>
+<p>Input:</p>
+<ul>
+<li>Domain name</li>
+<li>Domain (future) owner</li>
+<li>Referrer</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function mint(
+    string memory _domainName,
+    address _domainHolder,
+    address _referrer
+  ) external payable nonReentrant returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>DomainCreated</code> event</li>
 </ul>
 <doc-anchor-target id="owner-methods">
     <h2>
@@ -512,8 +526,83 @@
         <span>Owner methods</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="changedescription">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changedescription">#</doc-anchor-trigger>
+        <span><code v-pre>changeDescription</code></span>
+    </h3>
+</doc-anchor-target>
+<p>TLD owner can change metadata description through this function.</p>
+<p>Input:</p>
 <ul>
-<li>TODO...</li>
+<li>Description</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeDescription(string calldata _description) external onlyOwner</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="changenamemaxlength">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changenamemaxlength">#</doc-anchor-trigger>
+        <span><code v-pre>changeNameMaxLength</code></span>
+    </h3>
+</doc-anchor-target>
+<p>TLD owner can change max length of newly minted domain names. Does not work retroactively.</p>
+<p>Input:</p>
+<ul>
+<li>Maximum length</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeNameMaxLength(uint256 _maxLength) external onlyOwner</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="changeprice">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprice">#</doc-anchor-trigger>
+        <span><code v-pre>changePrice</code></span>
+    </h3>
+</doc-anchor-target>
+<p>TLD owner can change domain minting price.</p>
+<p>Input:</p>
+<ul>
+<li>Price in wei</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changePrice(uint256 _price) external onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>TldPriceChanged</code> event</li>
+</ul>
+<doc-anchor-target id="changereferralfee">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changereferralfee">#</doc-anchor-trigger>
+        <span><code v-pre>changeReferralFee</code></span>
+    </h3>
+</doc-anchor-target>
+<p>TLD owner can change the referral fee. The referral fee is in basis points (0 =&lt; fee &lt; 5000 bps).</p>
+<p>Input:</p>
+<ul>
+<li>Referral fee in bps</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeReferralFee(uint256 _referral) external onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>ReferralFeeChanged</code> event</li>
+</ul>
+<doc-anchor-target id="togglebuyingdomains">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#togglebuyingdomains">#</doc-anchor-trigger>
+        <span><code v-pre>toggleBuyingDomains</code></span>
+    </h3>
+</doc-anchor-target>
+<p>TLD owner can start/stop public domain minting.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function toggleBuyingDomains() external onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>DomainBuyingToggle</code> event</li>
 </ul>
 <doc-anchor-target id="factory-owner-methods">
     <h2>
@@ -521,8 +610,23 @@
         <span>Factory owner methods</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="togglebuyingdomains-1">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#togglebuyingdomains-1">#</doc-anchor-trigger>
+        <span><code v-pre>toggleBuyingDomains</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change protocol royalty for minting a domain. Royalty fee is in basis points (0 =&lt; fee &lt; 5000 bps).</p>
+<p>Input:</p>
 <ul>
-<li>TODO...</li>
+<li>Royalty fee in bps</li>
+</ul>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeRoyalty(uint256 _royalty) external</code></pre>
+</doc-codeblock></div>
+<p>Emitted events:</p>
+<ul>
+<li><code v-pre>TldRoyaltyChanged</code> event</li>
 </ul>
 
 

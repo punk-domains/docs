@@ -25,12 +25,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.701463266335" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.701562413185" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701463266335" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701562413185" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701463266335" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.701463266335" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701562413185" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.701562413185" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -228,9 +228,6 @@
 	uint256 tokenId;
 	address holder;
 	string data; // &lt;-- CUSTOM DATA
-	string url;
-	address pfpAddress;
-	uint256 pfpTokenId;
 }</code></pre>
 </doc-codeblock></div>
 <p>The purpose of custom data is to hold an arbitrary amount of various data (stored as a stringified JSON object).</p>
@@ -245,7 +242,12 @@
 <p><strong>Custom data JSON structure</strong> (example for <code v-pre>techie.web3</code>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-json"><code v-pre class="language-json">{
-  &quot;emails&quot;: [&quot;tempe.techie@protonmail.com&quot;], // possible to add multiple emails
+  &quot;image&quot;: {
+  	&quot;address&quot;: &quot;url-or-nft-address&quot;,
+  	&quot;tokenId&quot;: 0 // in case of NFT address, tokenID is mandatory, otherwise it is not
+  },
+  &quot;url&quot;: &quot;https://punk.domains&quot;,
+  &quot;emails&quot;: [&quot;user@example.com&quot;], // possible to add multiple emails
   &quot;twitter&quot;: [&quot;PunkDomains&quot;], // possible to add multiple twitter handles
   &quot;subdomains&quot;: {
     &quot;sandbox&quot;: { // sandbox.techie.web3 - in case I want to have a username with different data (like PFP) in the Sandbox metaverse

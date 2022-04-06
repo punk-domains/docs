@@ -25,12 +25,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.701562705288" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.702596791525" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.701562705288" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.702596791525" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.701562705288" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.701562705288" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.702596791525" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.702596791525" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -242,10 +242,8 @@
 <p><strong>Custom data JSON structure</strong> (example for <code v-pre>techie.web3</code>):</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-json"><code v-pre class="language-json">{
-  &quot;image&quot;: {
-  	&quot;address&quot;: &quot;url-or-nft-address&quot;,
-  	&quot;tokenId&quot;: 0 // in case of NFT address, tokenID is mandatory, otherwise it is not
-  },
+  &quot;imgAddress&quot;: &quot;url-or-nft-address&quot;, // either an HTTP url (e.g. &quot;http://hey.com/me.jpg&quot;) or an NFT address (0xa12B3...)
+  &quot;imgTokenId&quot;: 0, // in case of NFT address, tokenID is mandatory, otherwise it is not
   &quot;url&quot;: &quot;https://punk.domains&quot;,
   &quot;emails&quot;: [&quot;user@example.com&quot;], // possible to add multiple emails
   &quot;twitter&quot;: [&quot;PunkDomains&quot;], // possible to add multiple twitter handles

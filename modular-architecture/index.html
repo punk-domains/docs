@@ -6,23 +6,23 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Punk Domains Version 2 (migration completed) | Punk Domains Docs</title>
-    <meta name="title" content="Punk Domains Version 2 (migration completed) | Punk Domains Docs">
-    <meta name="description" content="Punk Domains has migrated to version 2. If you've minted domains in V1, you'll automatically get new ones." />
+    <title>Modular Architecture | Punk Domains Docs</title>
+    <meta name="title" content="Modular Architecture | Punk Domains Docs">
+    <meta name="description" content="Punk Domains protocol was built with modularity in mind, which makes it very flexible and allows for different parts of the module to be owned by..." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/other/v2-migration/">
-    <meta property="og:title" content="Punk Domains Version 2 (migration completed) | Punk Domains Docs">
-    <meta property="og:description" content="Punk Domains has migrated to version 2. If you've minted domains in V1, you'll automatically get new ones.">
-    <meta property="og:image" content="https://docs.punk.domains/static/old-new-domain-image.png">
+    <meta property="og:url" content="https://docs.punk.domains/modular-architecture/">
+    <meta property="og:title" content="Modular Architecture | Punk Domains Docs">
+    <meta property="og:description" content="Punk Domains protocol was built with modularity in mind, which makes it very flexible and allows for different parts of the module to be owned by...">
+    <meta property="og:image" content="https://docs.punk.domains/static/modular-design-cover.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/other/v2-migration/">
-    <meta property="twitter:title" content="Punk Domains Version 2 (migration completed) | Punk Domains Docs">
-    <meta property="twitter:description" content="Punk Domains has migrated to version 2. If you've minted domains in V1, you'll automatically get new ones.">
-    <meta property="twitter:image" content="https://docs.punk.domains/static/old-new-domain-image.png">
+    <meta property="twitter:url" content="https://docs.punk.domains/modular-architecture/">
+    <meta property="twitter:title" content="Modular Architecture | Punk Domains Docs">
+    <meta property="twitter:description" content="Punk Domains protocol was built with modularity in mind, which makes it very flexible and allows for different parts of the module to be owned by...">
+    <meta property="twitter:image" content="https://docs.punk.domains/static/modular-design-cover.png">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -229,74 +229,63 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="punk-domains-version-2-migration-completed" class="break-words">
+<doc-anchor-target id="modular-architecture" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#punk-domains-version-2-migration-completed">#</doc-anchor-trigger>
-        <span>Punk Domains Version 2 (migration completed)</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#modular-architecture">#</doc-anchor-trigger>
+        <span>Modular Architecture</span>
     </h1>
 </doc-anchor-target>
-<blockquote>
-<p>Punk Domains has migrated to version 2. If you&#x27;ve minted domains in V1, you&#x27;ll automatically get new ones. Old ones will be marked as deprecated, so just ignore them. All newly created domains are now v2 domains.</p>
-</blockquote>
-<p>We have added new exciting features to Punk Domains and making it more gas efficient. <span class="docs-emoji">&#x1F918;</span></p>
-<p>Let&#x27;s take a look at what&#x27;s new!</p>
-<doc-anchor-target id="1-new-default-domain-image">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-new-default-domain-image">#</doc-anchor-trigger>
-        <span>1. New default domain image</span>
-    </h3>
-</doc-anchor-target>
-<p>The most <strong>visible</strong> change is a new default domain image. We&#x27;re replacing the old one with black background, with the new one that has our brand colors (as gradient) as a background.</p>
+<p>Punk Domains protocol was built with modularity in mind, which makes it <strong>very flexible</strong> and allows for different parts of the module to be owned by different owners (for example, TLDs or even factories can be owned by a different owners).</p>
+<p>Let&#x27;s take a look at the graphical representation of the protocol and then dive into different parts.</p>
 <p><figure class="content-center">
-    <img src="/static/old-new-domain-image.png" alt="" />
+    <img src="../static/modular-architecture-bg-white.svg" alt="" />
     <figcaption class="caption"></figcaption>
 </figure>
 </p>
-<p>We feel this will make punk domains stand out more in NFT marketplaces! <span class="docs-emoji">&#x1F525;</span></p>
-<doc-anchor-target id="2-replacing-transfer-with-call">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-replacing-transfer-with-call">#</doc-anchor-trigger>
-        <span>2. Replacing <code v-pre>transfer()</code> with <code v-pre>call()</code></span>
-    </h3>
+<doc-anchor-target id="tld-factories">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#tld-factories">#</doc-anchor-trigger>
+        <span>TLD factories</span>
+    </h2>
 </doc-anchor-target>
-<p>Ok, this one is a bit more technical. <span class="docs-emoji">&#x1F913;</span></p>
-<p>In v1, payment transfers were done with the <code v-pre>transfer()</code> method. We&#x27;re replacing this method with the <code v-pre>.call{value}</code> method, which provides more flexibility to TLD owners (the ones that are contracts) through the fallback mechanism.</p>
-<p>Additionally, we&#x27;ve added a ReentrancyGuard mechanism, which is often necessary for <code v-pre>.call{value}</code> methods.</p>
-<doc-anchor-target id="3-gas-optimizations">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-gas-optimizations">#</doc-anchor-trigger>
-        <span>3. Gas optimizations <span class="docs-emoji">&#x26FD;</span></span>
-    </h3>
+<p>We&#x27;ll start with the main component of the Punk Domains architecture: a TLD factory.</p>
+<p>A TLD factory is a smart contract through which you can create new top-level domains (or TLDs, such as .web3, .ape, op, .etc). Each TLD is a separate smart contract, which is only possible because factory contracts have this &quot;magical&quot; ability to <strong>create new contracts on-chain</strong>.</p>
+<p>TLD contracts do <strong>not</strong> need to be created and deployed manually by any person. A new TLD contract is created dynamically on-chain, when the appropriate method in the factory contract is called (<code v-pre>createTld</code> method or <code v-pre>ownerCreateTld</code> method).</p>
+<doc-anchor-target id="why-are-there-multiple-factories">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#why-are-there-multiple-factories">#</doc-anchor-trigger>
+        <span>Why are there multiple factories?</span>
+    </h4>
 </doc-anchor-target>
-<p>In order to reduce gas costs and make our contracts more lean, we&#x27;ve removed the <code v-pre>url</code> and PFP fields as separate fields in domains.</p>
-<iframe src="https://giphy.com/embed/1uXj5hl0EMj0Tfe8Ub" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/dad-dude-basic-1uXj5hl0EMj0Tfe8Ub">via GIPHY</a></p>
-<p>Instead, both URL and  profile picture data can be defined in the <strong>custom data</strong> field, which is a very flexible data structure within the Domain struct.</p>
-<doc-anchor-target id="4-referrals">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#4-referrals">#</doc-anchor-trigger>
-        <span>4. Referrals</span>
-    </h3>
+<p>Each factory holds a <strong>template for a TLD</strong> that can be created through it. These TLD templates must follow the same basic structure (the same set of base methods), but can implement some methods differently or even have some special additional methods.</p>
+<p>For example, one TLD template can limit TLDs to the same metadata image background, while another template (from a different factory) can allow for custom domain images. Factories and templates could also differ on which business model they allow (renewable vs. one-time purchase) and in many other ways.</p>
+<doc-anchor-target id="how-many-different-types-of-tld-factories-there-are">
+    <h4>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-many-different-types-of-tld-factories-there-are">#</doc-anchor-trigger>
+        <span>How many different types of TLD factories there are?</span>
+    </h4>
 </doc-anchor-target>
-<p>Away from the very technical subjects and onto something we think you&#x27;ll all love! Now <strong>you can get paid for referring</strong> Punk Domains to others!</p>
-<p>Each TLD now has a referral system, which means that a certain percentage of a domain mint payment could go to a referrer (if TLD owner sets the referral fee above 0%).</p>
-<p>The <strong>default</strong> referral fee is 10%, but the owner can set it to any number between 0% and 50%. The TLDs owned by Punk Domains will have the referral fee at 10% at the start.</p>
-<blockquote>
-<p>How do referrals work on Punk Domains website?</p>
-<p>Simple! Just add <code v-pre>?ref=0xYourAddress</code> or <code v-pre>?ref=your.domain</code> to the URL and the website will remember you as a referrer. So next time you mint a domain (on v2), you should be able to see in block explorer that you have received a referral fee (on testnets it&#x27;s 10%).</p>
-</blockquote>
-<p><figure class="content-center">
-    <img src="/static/referrals.png" alt="" />
-    <figcaption class="caption"></figcaption>
-</figure>
-</p>
-<doc-anchor-target id="v2-deployment">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#v2-deployment">#</doc-anchor-trigger>
-        <span>V2 Deployment</span>
-    </h3>
+<p>Currently we have two factories (Standard and Flexi), but we expect many more in the future. There&#x27;s <strong>no limit</strong> on how many factories can be used in the Punk Domains protocol.</p>
+<p>Even though existing factories right now are owned by the Punk Domains governance, they can be owned by different entities in the future. The protocol allows that and it works perfectly fine.</p>
+<doc-anchor-target id="the-forbidden-tlds-contract">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-forbidden-tlds-contract">#</doc-anchor-trigger>
+        <span>The Forbidden TLDs contract</span>
+    </h2>
 </doc-anchor-target>
-<p>Punk Domains has (as of 23 March 2022) migrated to version 2. If you&#x27;ve minted domains in V1, you&#x27;ll automatically receive new ones. Old domain NFTs will be marked as deprecated, so just ignore them.</p>
-<p>All newly created domains are now v2 domains.</p>
+<p>Because there are multiple factories that can produce new top-level domains, it&#x27;s important that they <strong>avoid collisions</strong>.</p>
+<p>In order to coordinate, there&#x27;s a contract called <code v-pre>PunkForbiddenTlds</code> which holds a <strong>list of already created</strong> top-level domains. Factories, of course, are not allowed to create new TLDs with the same name (hence, the &quot;forbidden TLDs list&quot;).</p>
+<p>The Forbidden TLDs list does not include only TLDs from the Punk Domains ecosystem, but <strong>also TLDs created by other protocols</strong> such as <code v-pre>.eth</code> by ENS, and TLDs owned by Unstoppable Domains.</p>
+<doc-anchor-target id="the-resolver-contract">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#the-resolver-contract">#</doc-anchor-trigger>
+        <span>The Resolver contract</span>
+    </h2>
+</doc-anchor-target>
+<p>Resolving a domain means querying an address (and other data) associated with this domain. There&#x27;s also a reverse process (called reverse-resolver) where you try to find domain(s) associated with an address.</p>
+<p>Each TLD contract has a resolver and a reverse-resolver implemented by default, as methods in the TLD contract itself.</p>
+<p>But because there are so many TLD contracts, it&#x27;s also good to have <strong>a single smart contract</strong> that can <strong>resolve all TLDs</strong> on the given chain. This contract is called <code v-pre>PunkResolver</code>, and is not crucial for the system to work, but it is a nice shortcut.</p>
+<p>Instead of having to find and/or store all TLD contract addresses, you just need to know one contract address (the resolver&#x27;s address) and always resolve domains through that contract.</p>
 
 
 
@@ -308,16 +297,23 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/other/browser-extension/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/onchain/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Browser extension</span>
+                <span class="block mt-1">100% On-Chain</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/faq/">
+            <span>
+                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                <span class="block mt-1">FAQ</span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+        </a>
     </div>
 </nav>
 
@@ -362,6 +358,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Punk Domains Version 2 (migration completed)", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Modular Architecture", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

@@ -25,12 +25,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.png" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.706833324001" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.707510890679" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.706833324001" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.707510890679" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.706833324001" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.706833324001" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.707510890679" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.707510890679" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -260,16 +260,8 @@
   &quot;imgChainId&quot;: 137, // the chain where NFT exists on
   
   &quot;url&quot;: &quot;https://punk.domains&quot;,
-  &quot;emails&quot;: [&quot;user@example.com&quot;], // possible to add multiple emails
-  &quot;twitter&quot;: [&quot;PunkDomains&quot;], // possible to add multiple twitter handles
-  
-  &quot;subdomains&quot;: {
-    &quot;sandbox&quot;: { // sandbox.techie.web3 - in case I want to have a username with different data (like PFP) in the Sandbox metaverse
-      &quot;address&quot;: &quot;0x123...&quot;,
-      &quot;pfpTokenAddress&quot;: &quot;0x098...&quot;,
-      &quot;pfpTokenId&quot;: 22 // PFP ownership needs to be verified on front-end
-    }
-  },
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;twitter&quot;: &quot;PunkDomains&quot;,
   
   &quot;chainAddresses&quot;: { // if user wants to define different addresses on different chains (only one address per chain)
     &quot;10&quot;: &quot;0xa5b6...&quot;,

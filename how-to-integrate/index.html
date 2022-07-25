@@ -6,22 +6,22 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Domains for DAOs | Punk Domains Docs</title>
-    <meta name="title" content="Domains for DAOs | Punk Domains Docs">
-    <meta name="description" content="Every top-level domain (like .web3, .spartan, .klima) within the Punk Domains protocol can be owned by a different entity." />
+    <title>How to integrate Punk Domains | Punk Domains Docs</title>
+    <meta name="title" content="How to integrate Punk Domains | Punk Domains Docs">
+    <meta name="description" content="If you'd like to integrate Punk Domains into your web3 app, chances are the only smart contract you'll need to interact with is the" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/domains-for-daos/">
-    <meta property="og:title" content="Domains for DAOs | Punk Domains Docs">
-    <meta property="og:description" content="Every top-level domain (like .web3, .spartan, .klima) within the Punk Domains protocol can be owned by a different entity.">
+    <meta property="og:url" content="https://docs.punk.domains/how-to-integrate/">
+    <meta property="og:title" content="How to integrate Punk Domains | Punk Domains Docs">
+    <meta property="og:description" content="If you'd like to integrate Punk Domains into your web3 app, chances are the only smart contract you'll need to interact with is the">
     <meta property="og:image" content="https://docs.punk.domains/static/domains-for-daos.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/domains-for-daos/">
-    <meta property="twitter:title" content="Domains for DAOs | Punk Domains Docs">
-    <meta property="twitter:description" content="Every top-level domain (like .web3, .spartan, .klima) within the Punk Domains protocol can be owned by a different entity.">
+    <meta property="twitter:url" content="https://docs.punk.domains/how-to-integrate/">
+    <meta property="twitter:title" content="How to integrate Punk Domains | Punk Domains Docs">
+    <meta property="twitter:description" content="If you'd like to integrate Punk Domains into your web3 app, chances are the only smart contract you'll need to interact with is the">
     <meta property="twitter:image" content="https://docs.punk.domains/static/domains-for-daos.png">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
@@ -32,6 +32,7 @@
     <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.712097261457" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
     <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.712097261457" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.712097261457" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -229,48 +230,89 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="domains-for-daos" class="break-words">
+<doc-anchor-target id="how-to-integrate-punk-domains" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#domains-for-daos">#</doc-anchor-trigger>
-        <span>Domains for DAOs</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#how-to-integrate-punk-domains">#</doc-anchor-trigger>
+        <span>How to integrate Punk Domains</span>
     </h1>
 </doc-anchor-target>
-<p>Every top-level domain (like .web3, .spartan, .klima) within the <a href="https://punk.domains">Punk Domains</a> protocol can be owned by a different entity. Which makes it perfect for DAOs and communities.</p>
-<doc-anchor-target id="1-unity-and-belonging">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#1-unity-and-belonging">#</doc-anchor-trigger>
-        <span>1. Unity and belonging</span>
-    </h3>
-</doc-anchor-target>
-<p>Let&#x27;s say there&#x27;s a DAO called <em>BestDAO</em> with very active and excited community members. BestDAO decides to create a top-level domain (TLD) on Punk Domains called <code v-pre>.bestdao</code>.</p>
-<p>Having their own DAO domains, provides the community members with a <strong>stronger sense of unity</strong>. Members can mint domain names (or usernames) such as <code v-pre>tina.bestdao</code>, <code v-pre>mack.bestdao</code>, <code v-pre>raoul.bestdao</code>, etc. which increases their feeling of belonging to the common cause.</p>
-<doc-anchor-target id="2-income-for-dao-treasury">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#2-income-for-dao-treasury">#</doc-anchor-trigger>
-        <span>2. Income for DAO treasury</span>
-    </h3>
-</doc-anchor-target>
-<p>It also gives the DAO treasury a <strong>new source of income</strong>. Revenue from minting domains goes <strong>directly</strong> to the DAO treasury.</p>
-<p>As the TLD owner, DAO can also mint domains <strong>for free</strong>, which is very useful as a <strong>reward</strong> in community <strong>competitions</strong>.</p>
-<doc-anchor-target id="3-spreading-awareness-about-your-dao">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#3-spreading-awareness-about-your-dao">#</doc-anchor-trigger>
-        <span>3. Spreading awareness about your DAO</span>
-    </h3>
-</doc-anchor-target>
-<p>Last but not least, having your own TLD is a great <strong>marketing</strong> tool to reach people outside your community.</p>
-<p>Your DAO members can use their domain names as <strong>usernames</strong> on platforms like <strong>Twitter</strong> and this way <strong>increase the awareness</strong> about your DAO - similar to how <code v-pre>.eth</code> helped increase awareness about Ethereum outside the crypto space.</p>
-<doc-anchor-target id="reach-out">
+<p>If you&#x27;d like to integrate Punk Domains into your web3 app, chances are the only smart contract you&#x27;ll need to interact with is the <a href="/contracts/resolver/">Resolver contract</a>.</p>
+<p>Each network has their own copy of the Resolver contract. Find addresses here (proxy adddresses): <a href="https://docs.punk.domains/addresses/resolver-addresses/">https://docs.punk.domains/addresses/resolver-addresses/</a></p>
+<doc-anchor-target id="usecases">
     <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#reach-out">#</doc-anchor-trigger>
-        <span>Reach out!</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#usecases">#</doc-anchor-trigger>
+        <span>Usecases</span>
     </h2>
 </doc-anchor-target>
-<p>If you&#x27;re a member of a DAO and would be interested in having your own TLD, don&#x27;t hesitate to reach out to us via Discord or Twitter:</p>
+<p>Let&#x27;s see some common usecases.</p>
+<doc-anchor-target id="show-users-domain-name-instead-of-their-address">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-users-domain-name-instead-of-their-address">#</doc-anchor-trigger>
+        <span>Show user&#x27;s domain name instead of their address</span>
+    </h3>
+</doc-anchor-target>
+<p>When user connects their wallet, a web3 app usually shows their address in the navigation bar.</p>
+<p>You can check if user owns a punk domain and show that instead. To do that, you have a few different options in the Resolver contract:</p>
+<ol type="A">
+<li><code v-pre>getDefaultDomain(address, tld)</code>: Get user&#x27;s default domains for a specific top-level domain (for example, <code v-pre>.smol</code>)</li>
+<li><code v-pre>getDefaultDomains(address)</code>: Get user&#x27;s default domains across all TLDs</li>
+<li><code v-pre>getFirstDefaultDomain(address)</code>: Get the first available user&#x27;s domain, no matter of which TLD it is</li>
+</ol>
+<p>With options A and C you always receive at most 1 domain name back (or none). With option B, you may receive multiple user&#x27;s domains, so you can then ask the user to choose the preferred one.</p>
+<doc-anchor-target id="fetch-domain-metadata">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#fetch-domain-metadata">#</doc-anchor-trigger>
+        <span>Fetch domain metadata</span>
+    </h3>
+</doc-anchor-target>
+<p>To get domain&#x27;s metadata, call this function in the Resolver contract:</p>
 <ul>
-<li>Discord: <a href="https://discord.gg/8dSrwrAQeu">https://discord.gg/8dSrwrAQeu</a></li>
-<li>Twitter: <a href="https://twitter.com/PunkDomains">https://twitter.com/PunkDomains</a></li>
+<li><code v-pre>getDomainTokenUri(domainName, tld)</code></li>
 </ul>
+<p>Note that most punk domains have metadata stored onchain, which means it&#x27;s base64 encoded. In order to decode it, you can use the standard Node library called Buffer (something like <code v-pre>Buffer.from(metadata.substring(29), &quot;base64&quot;)</code>).</p>
+<p>See an <a href="https://github.com/punk-domains/punk-contracts/blob/f489dbd785005a2ea590d14a1c6b23e1ab6bf98e/test/resolver/proxy.test.js#L456">example here</a>.</p>
+<doc-anchor-target id="show-domain-image">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-domain-image">#</doc-anchor-trigger>
+        <span>Show domain image</span>
+    </h3>
+</doc-anchor-target>
+<p>Every domain has a default image set in its metadata. Most domains have a default image stored onchain, which means that it&#x27;s in the SVG format.</p>
+<p>In that case the image data will look something like this: <code v-pre>data:image/svg+xml;base64,PHN2Zy...FTkSuQmCC</code> (a long string).</p>
+<p>What to do with it? The same as you do with http image links: add it into the <code v-pre>src</code> attribute of the <code v-pre>&lt;img&gt;</code>:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-markup"><code v-pre class="language-markup">&lt;img src=&quot;data:image/svg+xml;base64,PHN2Zy...FTkSuQmCC&quot;&gt;</code></pre>
+</doc-codeblock></div>
+<p>Easy peasy. <span class="docs-emoji">&#x1F600;</span></p>
+<doc-anchor-target id="show-users-custom-image">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#show-users-custom-image">#</doc-anchor-trigger>
+        <span>Show user&#x27;s custom image</span>
+    </h3>
+</doc-anchor-target>
+<p>Domain holder&#x27;s can set up a custom image in the domain data (not metadata, but separate <a href="/contracts/custom-data/">custom data</a>!)</p>
+<p>The custom image does not replace the default domain image in the metadata. Instead it just provides an option for domain holder to provide their custom profile picture.</p>
+<p>This custom image resides in the custom data, which you can fetch through the Resolver contract like this:</p>
+<ul>
+<li><code v-pre>getDomainData(domainName, tld)</code></li>
+</ul>
+<p>This call returns a JSON object, inside which you need to find the <code v-pre>imgAddress</code> key.</p>
+<p>The <code v-pre>imgAddress</code> value can be either an <code v-pre>http...</code> URL, an <code v-pre>ipfs://...</code> link, or NFT address (<code v-pre>0x...</code>).</p>
+<p>Which means that user&#x27;s custom image can either be:</p>
+<ul>
+<li>Image stored on a web2 server (<code v-pre>http</code> URL)</li>
+<li>Image stored on IPFS (<code v-pre>ipfs</code> URL)</li>
+<li>PFP NFT stored on blockchain (<code v-pre>0x</code> address), like for example a Bored Ape NFT</li>
+</ul>
+<p>If it&#x27;s an http/ipfs URL, you don&#x27;t need to do anything else - this URL is the custom image link.</p>
+<p>In case it&#x27;s an NFT address (meaning it starts with <code v-pre>0x</code>), you&#x27;ll need to do some additional work. First check for <code v-pre>imgTokenId</code> and <code v-pre>imgChainId</code> in the custom data. Then call the <code v-pre>tokenURI</code> function of that PFP NFT contract and parse its metadata to get the image link. In addition you can also check if the user actually owns this PFP NFT (<code v-pre>ownerOf(tokenId)</code> function in the PFP NFT contract).</p>
+<doc-anchor-target id="support">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#support">#</doc-anchor-trigger>
+        <span>Support</span>
+    </h2>
+</doc-anchor-target>
+<p>If you have a question, don&#x27;t hesitate to ask us <a href="https://discord.gg/invite/8dSrwrAQeu">via Discord</a>.</p>
 
 
 
@@ -282,20 +324,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/about/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/domains-for-daos/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">About Punk Domains</span>
+                <span class="block mt-1">Domains for DAOs</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/how-to-integrate/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/onchain/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">How to integrate Punk Domains</span>
+                <span class="block mt-1">100% On-Chain</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -343,6 +385,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Domains for DAOs", icon: "file", hasPrism: false, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "How to integrate Punk Domains", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

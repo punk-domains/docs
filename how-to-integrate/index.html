@@ -27,12 +27,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.ico" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.712097261457" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.712098547208" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.712097261457" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.712098547208" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.712097261457" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.712097261457" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.712098547208" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.712098547208" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -245,24 +245,35 @@
     </h2>
 </doc-anchor-target>
 <p>Let&#x27;s see some common usecases.</p>
-<doc-anchor-target id="show-users-domain-name-instead-of-their-address">
+<doc-anchor-target id="a-show-users-domain-name-instead-of-their-address">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#show-users-domain-name-instead-of-their-address">#</doc-anchor-trigger>
-        <span>Show user&#x27;s domain name instead of their address</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#a-show-users-domain-name-instead-of-their-address">#</doc-anchor-trigger>
+        <span>A) Show user&#x27;s domain name instead of their address</span>
     </h3>
 </doc-anchor-target>
-<p>When user connects their wallet, a web3 app usually shows their address in the navigation bar.</p>
-<p>You can check if user owns a punk domain and show that instead. To do that, you have a few different options in the Resolver contract:</p>
+<p>When user connects their wallet, a web3 app usually shows their address in the navigation bar:</p>
+<p><figure class="content-center">
+    <img src="https://raw.githubusercontent.com/tempe-techie/images/main/wallet-no-domain.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>You can check if user owns a punk domain and show that instead:</p>
+<p><figure class="content-center">
+    <img src="https://raw.githubusercontent.com/tempe-techie/images/main/wallet-with-domain.png" alt="" />
+    <figcaption class="caption"></figcaption>
+</figure>
+</p>
+<p>To do that, you have a few different options in the Resolver contract:</p>
 <ol type="A">
-<li><code v-pre>getDefaultDomain(address, tld)</code>: Get user&#x27;s default domains for a specific top-level domain (for example, <code v-pre>.smol</code>)</li>
-<li><code v-pre>getDefaultDomains(address)</code>: Get user&#x27;s default domains across all TLDs</li>
+<li><code v-pre>getDefaultDomain(address, tld)</code>: Get user&#x27;s default domain for a specific top-level domain (for example, <code v-pre>.smol</code>)</li>
+<li><code v-pre>getDefaultDomains(address)</code>: Get user&#x27;s default domains across all TLDs (multiple domains)</li>
 <li><code v-pre>getFirstDefaultDomain(address)</code>: Get the first available user&#x27;s domain, no matter of which TLD it is</li>
 </ol>
 <p>With options A and C you always receive at most 1 domain name back (or none). With option B, you may receive multiple user&#x27;s domains, so you can then ask the user to choose the preferred one.</p>
-<doc-anchor-target id="fetch-domain-metadata">
+<doc-anchor-target id="b-fetch-domain-metadata">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#fetch-domain-metadata">#</doc-anchor-trigger>
-        <span>Fetch domain metadata</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#b-fetch-domain-metadata">#</doc-anchor-trigger>
+        <span>B) Fetch domain metadata</span>
     </h3>
 </doc-anchor-target>
 <p>To get domain&#x27;s metadata, call this function in the Resolver contract:</p>
@@ -271,10 +282,10 @@
 </ul>
 <p>Note that most punk domains have metadata stored onchain, which means it&#x27;s base64 encoded. In order to decode it, you can use the standard Node library called Buffer (something like <code v-pre>Buffer.from(metadata.substring(29), &quot;base64&quot;)</code>).</p>
 <p>See an <a href="https://github.com/punk-domains/punk-contracts/blob/f489dbd785005a2ea590d14a1c6b23e1ab6bf98e/test/resolver/proxy.test.js#L456">example here</a>.</p>
-<doc-anchor-target id="show-domain-image">
+<doc-anchor-target id="c-show-domain-image">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#show-domain-image">#</doc-anchor-trigger>
-        <span>Show domain image</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#c-show-domain-image">#</doc-anchor-trigger>
+        <span>C) Show domain image</span>
     </h3>
 </doc-anchor-target>
 <p>Every domain has a default image set in its metadata. Most domains have a default image stored onchain, which means that it&#x27;s in the SVG format.</p>
@@ -284,10 +295,10 @@
 <pre class="language-markup"><code v-pre class="language-markup">&lt;img src=&quot;data:image/svg+xml;base64,PHN2Zy...FTkSuQmCC&quot;&gt;</code></pre>
 </doc-codeblock></div>
 <p>Easy peasy. <span class="docs-emoji">&#x1F600;</span></p>
-<doc-anchor-target id="show-users-custom-image">
+<doc-anchor-target id="d-show-users-custom-image">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#show-users-custom-image">#</doc-anchor-trigger>
-        <span>Show user&#x27;s custom image</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#d-show-users-custom-image">#</doc-anchor-trigger>
+        <span>D) Show user&#x27;s custom image</span>
     </h3>
 </doc-anchor-target>
 <p>Domain holder&#x27;s can set up a custom image in the domain data (not metadata, but separate <a href="/contracts/custom-data/">custom data</a>!)</p>

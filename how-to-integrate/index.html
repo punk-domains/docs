@@ -30,12 +30,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.ico" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.712145687958" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.712154743022" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.712145687958" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.712154743022" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.712145687958" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.712145687958" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.712154743022" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.712154743022" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -320,6 +320,18 @@
 </ul>
 <p>If it&#x27;s an http/ipfs URL, you don&#x27;t need to do anything else - this URL is the custom image link.</p>
 <p>In case it&#x27;s an NFT address (meaning it starts with <code v-pre>0x</code>), you&#x27;ll need to do some additional work. First check for <code v-pre>imgTokenId</code> and <code v-pre>imgChainId</code> in the custom data. Then call the <code v-pre>tokenURI</code> function of that PFP NFT contract and parse its metadata to get the image link. In addition you can also check if the user actually owns this PFP NFT (<code v-pre>ownerOf(tokenId)</code> function in the PFP NFT contract).</p>
+<doc-anchor-target id="e-search-by-domain">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#e-search-by-domain">#</doc-anchor-trigger>
+        <span>E) Search by domain</span>
+    </h3>
+</doc-anchor-target>
+<p>Let&#x27;s say you want to allow users to search by domain. Meaning that a user enters a domain name, and then your web3 app needs to find out what&#x27;s the address behind that domain (the owner address).</p>
+<p>In this case you need to call this function in the Resolver contract:</p>
+<ul>
+<li><code v-pre>getDomainHolder(domainName, tld)</code></li>
+</ul>
+<p>The response is the address that owns the submitted domain.</p>
 <doc-anchor-target id="support">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#support">#</doc-anchor-trigger>

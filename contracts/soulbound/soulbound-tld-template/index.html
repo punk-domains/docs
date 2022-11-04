@@ -9,21 +9,21 @@
     <meta name="turbo-cache-control" content="no-cache">
 
     <!-- Primary Meta Tags -->
-    <title>Flexi TLD contract | Punk Domains Docs</title>
-    <meta name="title" content="Flexi TLD contract | Punk Domains Docs">
-    <meta name="description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template." />
+    <title>Soulbound TLD contract | Punk Domains Docs</title>
+    <meta name="title" content="Soulbound TLD contract | Punk Domains Docs">
+    <meta name="description" content="The Soulbound TLD contract is almost identical to the Flexi TLD contract, except that it does not allow domain transfers beyong minting and burning." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://docs.punk.domains/contracts/flexi/flexi-tld-template/">
-    <meta property="og:title" content="Flexi TLD contract | Punk Domains Docs">
-    <meta property="og:description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.">
+    <meta property="og:url" content="https://docs.punk.domains/contracts/soulbound/soulbound-tld-template/">
+    <meta property="og:title" content="Soulbound TLD contract | Punk Domains Docs">
+    <meta property="og:description" content="The Soulbound TLD contract is almost identical to the Flexi TLD contract, except that it does not allow domain transfers beyong minting and burning.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://docs.punk.domains/contracts/flexi/flexi-tld-template/">
-    <meta property="twitter:title" content="Flexi TLD contract | Punk Domains Docs">
-    <meta property="twitter:description" content="TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.">
+    <meta property="twitter:url" content="https://docs.punk.domains/contracts/soulbound/soulbound-tld-template/">
+    <meta property="twitter:title" content="Soulbound TLD contract | Punk Domains Docs">
+    <meta property="twitter:description" content="The Soulbound TLD contract is almost identical to the Flexi TLD contract, except that it does not allow domain transfers beyong minting and burning.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -231,16 +231,15 @@
                 <div id="docs-sidebar-right-toggle"></div>
                
                 <!-- Page content  -->
-<doc-anchor-target id="flexi-tld-contract" class="break-words">
+<doc-anchor-target id="soulbound-tld-contract" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#flexi-tld-contract">#</doc-anchor-trigger>
-        <span>Flexi TLD contract</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#soulbound-tld-contract">#</doc-anchor-trigger>
+        <span>Soulbound TLD contract</span>
     </h1>
 </doc-anchor-target>
-<p>TLD contracts are generated dynamically by a Factory contract based on a pre-defined template.</p>
-<p>As the name implies, Flexi TLD contract allows for more flexibility compared to the Standard TLD contract. The major difference is that domain/NFT metadata is separated into its own contract, which makes it easier to customize both metadata and domain images.</p>
-<p><strong>See the Flexi TLD contract here:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/flexi/FlexiPunkTLD.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/flexi/FlexiPunkTLD.sol</a></p>
-<p><strong>ABI:</strong> <a href="https://github.com/punk-domains/punk-abi/blob/main/FlexiTldAbi.json">https://github.com/punk-domains/punk-abi/blob/main/FlexiTldAbi.json</a></p>
+<p>The Soulbound TLD contract is almost identical to the Flexi TLD contract, except that it does not allow domain transfers beyong minting and burning. Soulbound TLD is another name for a non-transferable TLD.</p>
+<p><strong>See the Soulbound TLD contract here:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/soulbound/SoulboundPunkTLD.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/soulbound/SoulboundPunkTLD.sol</a></p>
+<p><strong>ABI (the same as for the Flexi TLD):</strong> <a href="https://github.com/punk-domains/punk-abi/blob/main/FlexiTldAbi.json">https://github.com/punk-domains/punk-abi/blob/main/FlexiTldAbi.json</a></p>
 <doc-anchor-target id="data">
     <h2>
         <doc-anchor-trigger class="header-anchor-trigger" to="#data">#</doc-anchor-trigger>
@@ -270,7 +269,7 @@
 </ul>
 <p>Read more about custom data <a href="custom-data.md">here</a>.</p>
 <blockquote>
-<p>Note that in Flexi contracts the Domain struct is defined in the <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/interfaces/IBasePunkTLD.sol">IBasePunkTLD interface</a>.</p>
+<p>Note that in Flexi/Soulbound contracts the Domain struct is defined in the <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/interfaces/IBasePunkTLD.sol">IBasePunkTLD interface</a>.</p>
 </blockquote>
 <doc-anchor-target id="read-methods">
     <h2>
@@ -398,7 +397,7 @@
         <span><code v-pre>idCounter</code>*</span>
     </h3>
 </doc-anchor-target>
-<p>Counter for settings token IDs. In all Flexi TLD contracts, token IDs must start with 1, not 0 (mainly to enable the burn feature to properly work).</p>
+<p>Counter for settings token IDs. In all Flexi/Soulbound TLD contracts, token IDs must start with 1, not 0 (mainly to enable the burn feature to properly work).</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-solidity"><code v-pre class="language-solidity">function idCounter() public view returns(uint256)</code></pre>
 </doc-codeblock></div>
@@ -830,7 +829,7 @@
 <pre class="language-solidity"><code v-pre class="language-solidity">function changeRoyaltyFeeUpdater(address _newUpdater) external</code></pre>
 </doc-codeblock></div>
 <hr />
-<p>*Methods marked with a star are specific for the Flexi contract. They are not obligatory for other contracts of that type.</p>
+<p>*Methods marked with a star are specific for the Flexi/Soulbound contract. They are not obligatory for other contracts of that type.</p>
 
 
 
@@ -842,20 +841,20 @@
             
 <nav class="flex mt-14">
     <div class="w-1/2">
-        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/contracts/flexi/flexi-tld-factory/">
+        <a class="px-5 py-4 h-full flex items-center break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="/contracts/soulbound/soulbound-tld-factory/">
             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
             <span>
                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                <span class="block mt-1">Flexi TLD factory contract</span>
+                <span class="block mt-1">Soulbound TLD factory contract</span>
             </span>
         </a>
     </div>
 
     <div class="w-1/2">
-        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/soulbound/soulbound-tld-factory/">
+        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-all md:break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="/contracts/forbidden-tlds/">
             <span>
                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                <span class="block mt-1">Soulbound TLD factory contract</span>
+                <span class="block mt-1">Forbidden and already-used TLDs contract</span>
             </span>
             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
         </a>
@@ -903,6 +902,6 @@
 
         <div id="docs-overlay-target"></div>
 
-        <script>window.__DOCS__ = { "title": "Flexi TLD contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
+        <script>window.__DOCS__ = { "title": "Soulbound TLD contract", icon: "file", hasPrism: true, hasMermaid: false, hasMath: false }</script>
     </body>
 </html>

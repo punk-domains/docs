@@ -11,29 +11,29 @@
     <!-- Primary Meta Tags -->
     <title>Flexi TLD factory contract | Punk Domains Docs</title>
     <meta name="title" content="Flexi TLD factory contract | Punk Domains Docs">
-    <meta name="description" content="WIP (Work In Progress): This file has not been completely updated yet." />
+    <meta name="description" content="Flexi TLD Factory is a contract responsible for issuing new TLDs and keeping a list of all TLDs created through it, and their respective addresses." />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://docs.punk.domains/contracts/flexi/flexi-tld-factory/">
     <meta property="og:title" content="Flexi TLD factory contract | Punk Domains Docs">
-    <meta property="og:description" content="WIP (Work In Progress): This file has not been completely updated yet.">
+    <meta property="og:description" content="Flexi TLD Factory is a contract responsible for issuing new TLDs and keeping a list of all TLDs created through it, and their respective addresses.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://docs.punk.domains/contracts/flexi/flexi-tld-factory/">
     <meta property="twitter:title" content="Flexi TLD factory contract | Punk Domains Docs">
-    <meta property="twitter:description" content="WIP (Work In Progress): This file has not been completely updated yet.">
+    <meta property="twitter:description" content="Flexi TLD Factory is a contract responsible for issuing new TLDs and keeping a list of all TLDs created through it, and their respective addresses.">
     
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.ico" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.720823367778" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.720904088989" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.720823367778" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.720904088989" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.720823367778" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.720823367778" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.720904088989" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.720904088989" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -237,9 +237,6 @@
         <span>Flexi TLD factory contract</span>
     </h1>
 </doc-anchor-target>
-<blockquote>
-<p>WIP (Work In Progress): This file has not been completely updated yet.</p>
-</blockquote>
 <p>Flexi TLD Factory is a contract responsible for issuing new TLDs and keeping a list of all TLDs created through it, and their respective addresses.</p>
 <p><strong>Contract code:</strong> <a href="https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/flexi/FlexiPunkTLDFactory.sol">https://github.com/punk-domains/punk-contracts/blob/main/contracts/factories/flexi/FlexiPunkTLDFactory.sol</a></p>
 <blockquote>
@@ -416,6 +413,77 @@
         <span>Owner methods</span>
     </h2>
 </doc-anchor-target>
+<doc-anchor-target id="changeforbiddentldsaddress">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeforbiddentldsaddress">#</doc-anchor-trigger>
+        <span><code v-pre>changeForbiddenTldsAddress</code></span>
+    </h3>
+</doc-anchor-target>
+<p>When a new TLD is created, a TLD Factory needs to check with the Forbidden TLDs contract whether the TLD name is still available. If it is, the factory also needs to register the newly created TLD name with the Forbidden TLDs contract.</p>
+<p>In order to do that, the Forbidden TLDs address needs to be specified in the factory contract.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeForbiddenTldsAddress(address _forbiddenTlds) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_forbiddenTlds</code>: The address of the Forbidden TLDs contract</li>
+</ul>
+<doc-anchor-target id="changemetadataaddress">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changemetadataaddress">#</doc-anchor-trigger>
+        <span><code v-pre>changeMetadataAddress</code>*</span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the address of the default metadata contract. This is the address that each newly created TLD receives as an input. Every TLD contract owner can later on change the metadata address within the TLD contract, if they want.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeMetadataAddress(address _mAddr) external onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_mAddr</code>: Metadata contract address</li>
+</ul>
+<doc-anchor-target id="changenamemaxlength">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changenamemaxlength">#</doc-anchor-trigger>
+        <span><code v-pre>changeNameMaxLength</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the max name length for new TLDs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeNameMaxLength(uint256 _maxLength) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_maxLength</code>: Max TLD name length</li>
+</ul>
+<doc-anchor-target id="changeprice">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprice">#</doc-anchor-trigger>
+        <span><code v-pre>changePrice</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the price for minting new TLDs.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changePrice(uint256 _price) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_price</code>: TLD price in wei</li>
+</ul>
+<doc-anchor-target id="changeroyalty">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeroyalty">#</doc-anchor-trigger>
+        <span><code v-pre>changeRoyalty</code></span>
+    </h3>
+</doc-anchor-target>
+<p>Factory owner can change the initial royalty amount which is set when a new TLD is created. The royalty amount can then be changed separately in each TLD contract by the Factory owner.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function changeRoyalty(uint256 _royalty) public onlyOwner</code></pre>
+</doc-codeblock></div>
+<p>Input:</p>
+<ul>
+<li><code v-pre>_royalty</code>: royalty amount in wei</li>
+</ul>
 <doc-anchor-target id="ownercreatetld">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#ownercreatetld">#</doc-anchor-trigger>
@@ -444,77 +512,6 @@
 <ul>
 <li>Newly created TLD address</li>
 </ul>
-<doc-anchor-target id="changeroyalty">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changeroyalty">#</doc-anchor-trigger>
-        <span><code v-pre>changeRoyalty</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Factory owner can change the initial royalty amount which is set when a new TLD is created. The royalty amount can then be changed separately in each TLD contract by the Factory owner.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function changeRoyalty(uint256 _royalty) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_royalty</code>: royalty amount in wei</li>
-</ul>
-<doc-anchor-target id="changeprice">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprice">#</doc-anchor-trigger>
-        <span><code v-pre>changePrice</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Factory owner can change the price for minting new TLDs.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function changePrice(uint256 _price) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_price</code>: TLD price in wei</li>
-</ul>
-<doc-anchor-target id="changeprojectname">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changeprojectname">#</doc-anchor-trigger>
-        <span><code v-pre>changeProjectName</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Factory owner can change the project name (this shows in every domain default NFT image).</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function changeProjectName(string memory _newProjectName) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_newProjectName</code>: New project name</li>
-</ul>
-<doc-anchor-target id="changenamemaxlength">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changenamemaxlength">#</doc-anchor-trigger>
-        <span><code v-pre>changeNameMaxLength</code></span>
-    </h3>
-</doc-anchor-target>
-<p>Factory owner can change the max name length for new TLDs.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function changeNameMaxLength(uint256 _maxLength) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_maxLength</code>: Max TLD name length</li>
-</ul>
-<doc-anchor-target id="changeforbiddentldsaddress">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#changeforbiddentldsaddress">#</doc-anchor-trigger>
-        <span><code v-pre>changeForbiddenTldsAddress</code></span>
-    </h3>
-</doc-anchor-target>
-<p>When a new TLD is created, a TLD Factory needs to check with the Forbidden TLDs contract whether the TLD name is still available. If it is, the factory also needs to register the newly created TLD name with the Forbidden TLDs contract.</p>
-<p>In order to do that, the Forbidden TLDs address needs to be specified in the factory contract.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre class="language-solidity"><code v-pre class="language-solidity">function changeForbiddenTldsAddress(address _forbiddenTlds) public onlyOwner</code></pre>
-</doc-codeblock></div>
-<p>Input:</p>
-<ul>
-<li><code v-pre>_forbiddenTlds</code>: The address of the Forbidden TLDs contract</li>
-</ul>
 <doc-anchor-target id="togglebuyingtlds">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#togglebuyingtlds">#</doc-anchor-trigger>
@@ -526,7 +523,7 @@
 <pre class="language-solidity"><code v-pre class="language-solidity">function toggleBuyingTlds() public onlyOwner</code></pre>
 </doc-codeblock></div>
 <hr />
-<p>*Methods marked with a star are specific for this contract. They are not obligatory for other contracts of that type.</p>
+<p>*Methods marked with a star are specific for the Flexi contract. They are not obligatory for other contracts of that type.</p>
 
 
 

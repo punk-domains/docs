@@ -28,12 +28,12 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.ico" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.720823367778" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.720904088989" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.720823367778" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.720904088989" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.720823367778" defer></script>
-    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.720823367778" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.720904088989" defer></script>
+    <script id="prism-js" type="text/javascript" src="/resources/js/prism.js?v=1.11.2.720904088989" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -309,13 +309,28 @@
 </doc-anchor-target>
 <p>For every newly minted (paid) domain name a royalty payment is taken and sent to Punk Domains governance.</p>
 <p>In case a domain is created for free by TLD owner, or if royalty is set to 0, there&#x27;s no royalty to be paid.</p>
-<p>Only Punk Domains governance can change the royalty amount. Max royalty percentage is 50%.</p>
+<p>Only Punk Domains governance can change the royalty amount.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre class="language-solidity"><code v-pre class="language-solidity">function royalty() public view returns(uint256)</code></pre>
 </doc-codeblock></div>
 <p>Output:</p>
 <ul>
-<li>Domain royalty in wei</li>
+<li>Domain royalty fee in bips</li>
+</ul>
+<doc-anchor-target id="referral">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#referral">#</doc-anchor-trigger>
+        <span><code v-pre>referral</code></span>
+    </h3>
+</doc-anchor-target>
+<p>A TLD can decide to enable referral fees for each domain mint.</p>
+<p>By default the referral fee is set to 1000 bips (10%). If the owner does not want to allow referral fees, they need to set the referral fee to 0.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-solidity"><code v-pre class="language-solidity">function royalty() public view returns(uint256)</code></pre>
+</doc-codeblock></div>
+<p>Output:</p>
+<ul>
+<li>referral fee in bips</li>
 </ul>
 <doc-anchor-target id="namemaxlength">
     <h3>
@@ -457,7 +472,7 @@
         <span><code v-pre>tokenURI</code></span>
     </h3>
 </doc-anchor-target>
-<p>Returns the domain holder&#x27;s default NFT image (each domain is an ERC-721 NFT).</p>
+<p>This function calls the Metadata contract and gets back domain/NFT metadata (each domain is an ERC-721 NFT).</p>
 <p>Input:</p>
 <ul>
 <li>Token ID</li>
@@ -467,7 +482,7 @@
 </doc-codeblock></div>
 <p>Output:</p>
 <ul>
-<li>Domain holder&#x27;s selected URL</li>
+<li>Domain metadata as string (either base64-encoded or an URL)</li>
 </ul>
 <doc-anchor-target id="write-methods">
     <h2>
@@ -626,10 +641,10 @@
         <span>Factory owner methods</span>
     </h2>
 </doc-anchor-target>
-<doc-anchor-target id="togglebuyingdomains-1">
+<doc-anchor-target id="changeroyalty">
     <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#togglebuyingdomains-1">#</doc-anchor-trigger>
-        <span><code v-pre>toggleBuyingDomains</code></span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#changeroyalty">#</doc-anchor-trigger>
+        <span><code v-pre>changeRoyalty</code></span>
     </h3>
 </doc-anchor-target>
 <p>Factory owner can change protocol royalty for minting a domain. Royalty fee is in basis points (0 =&lt; fee &lt; 5000 bps).</p>

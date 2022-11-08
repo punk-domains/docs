@@ -30,11 +30,11 @@
     <script>(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
     <link href="/static/favicon.ico" rel="icon" />
-    <link href="/resources/css/retype.css?v=1.11.2.720904868573" rel="stylesheet" data-turbo-track="reload" />
+    <link href="/resources/css/retype.css?v=1.11.2.721260531601" rel="stylesheet" data-turbo-track="reload" />
 
-    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.720904868573" defer data-turbo-track="reload"></script>
+    <script type="text/javascript" src="/resources/js/config.js?v=1.11.2.721260531601" defer data-turbo-track="reload"></script>
     <script type="text/javascript" src="/resources/js/retype.js?v=1.11.2" defer data-turbo-track="reload"></script>
-    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.720904868573" defer></script>
+    <script id="lunr-js" type="text/javascript" src="/resources/js/lunr.js?v=1.11.2.721260531601" defer></script>
 </head>
     <body>
         <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -252,7 +252,7 @@
     </h2>
 </doc-anchor-target>
 <p>We&#x27;ll start with the main component of the Punk Domains architecture: a TLD factory.</p>
-<p>A TLD factory is a smart contract through which you can create new top-level domains (or TLDs, such as .web3, .ape, op, .etc). Each TLD is a separate smart contract, which is only possible because factory contracts have this &quot;magical&quot; ability to <strong>create new contracts on-chain</strong>.</p>
+<p>A TLD factory is a smart contract through which you can create new top-level domains (or TLDs, such as .smol, .ape, .op, .etc). Each TLD is a separate smart contract, which is only possible because factory contracts have this &quot;magical&quot; ability to <strong>create new contracts on-chain</strong>.</p>
 <p>TLD contracts do <strong>not</strong> need to be created and deployed manually by any person. A new TLD contract is created dynamically on-chain, when the appropriate method in the factory contract is called (<code v-pre>createTld</code> method or <code v-pre>ownerCreateTld</code> method).</p>
 <doc-anchor-target id="why-are-there-multiple-factories">
     <h4>
@@ -268,7 +268,13 @@
         <span>How many different types of TLD factories there are?</span>
     </h4>
 </doc-anchor-target>
-<p>Currently we have two factories (Standard and Flexi), but we expect many more in the future. There&#x27;s <strong>no limit</strong> on how many factories can be used in the Punk Domains protocol.</p>
+<ul>
+<li>Standard TLD Factory (the first and most basic TLD template)</li>
+<li>Flexi TLD Factory (TLDs with custom metadata and a minter role)</li>
+<li>Soulbound TLD Factory (similar to Flexi, but with non-transferable domains)</li>
+<li>Renewable TLD Factory (in the works)</li>
+</ul>
+<p>We expect many more in the future. There&#x27;s <strong>no limit</strong> on how many factories can be used in the Punk Domains protocol.</p>
 <p>Even though existing factories right now are owned by the Punk Domains governance, they can be owned by different entities in the future. The protocol allows that and it works perfectly fine.</p>
 <doc-anchor-target id="the-forbidden-tlds-contract">
     <h2>
